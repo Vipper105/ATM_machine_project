@@ -118,6 +118,7 @@ public class ATMmachine {
 					// Xem số dư
 					transaction.execute();
 					//
+				    System.out.println(cashDispenser.sumCoinsInATM(machineID));
 //					lisTransactions.add(transaction);
 					flag = 1;
 					addTrans(transaction, flag);
