@@ -131,7 +131,7 @@ public class ManHinh {
 		System.out.println("\t1. Manager ATM");
 		System.out.println("\t2. Manager User");
 		System.out.println("\t3. Manager Account");
-		System.out.println("\t4. Manager Cashdispenser");
+		System.out.println("\t4. Manager Cashdispenser/Coins");
 		System.out.println("\t5. Manager Payment/Transaction");
 		System.out.println("\t6. Exit");
 
@@ -186,7 +186,8 @@ public class ManHinh {
 		System.out.println("\t2 - Delete Money quantity of ATM");
 		System.out.println("\t3 - Update Money quantity of ATM");
 		System.out.println("\t4 - Show Money quantity of ATM");
-		System.out.println("\t5 - Exit");
+		System.out.println("\t5 - Show all kind money");
+		System.out.println("\t6 - Exit");
 
 		System.out.println("Nhập vào lựa chọn: ");
 
@@ -367,6 +368,10 @@ public class ManHinh {
 	// Quản lý coins
 	public void displayMessageInputMachineID() {
 		System.out.println("Input machine ID :   ");
+	}
+	
+	public void displayMessageInputCoinID() {
+		System.out.println("Input coin ID :   ");
 	}
 	
 	public void displayMessageInputPriceTag() {

@@ -740,12 +740,12 @@ public class ManagerATM {
 
 			case 2:
 				// delete coins
-
+				deleteCoin();
 				break;
 
 			case 3:
 				// update coins
-
+				updateCoin();
 				break;
 
 			case 4:
@@ -753,8 +753,12 @@ public class ManagerATM {
 				showCurrentListCoin();
 
 				break;
-
 			case 5:
+				// show all coins
+				showAllListCoin();
+				break;
+
+			case 6:
 				// exit
 				isContinue = false;
 				break;
@@ -810,4 +814,62 @@ public class ManagerATM {
 		}
 	}
 
+	public void showAllListCoin() {
+		CoinsRepository coinRepo = new CoinsRepositoryImpl();
+		List<Coins> listCoin = coinRepo.findAllCoins();
+
+		for (int i = 0; i < listCoin.size(); i++) {
+			System.out.println(listCoin.get(i).showInfoCoin());
+
+		}
+
+	}
+
+	public void updateCoin() {
+		while (true) {
+			manHinh.displayMessageInputCoinID();
+			int coinID = banPhim.nhanThongTinNhapVao();
+
+			CoinsRepository coinRepo = new CoinsRepositoryImpl();
+			Coins coin = coinRepo.findCoinsById(coinID);
+
+			manHinh.displayMessageInputPriceTag();
+			int priceTag = banPhim.nhanThongTinNhapVao();
+
+			manHinh.displayMessageInputQuantity();
+			long quantity = banPhim.nhanThongTinNhapVaoLong();
+
+			manHinh.displayMessageInputMachineID();
+			int machineID = banPhim.nhanThongTinNhapVao();
+
+			coin.setAllAttributeCoins(priceTag, quantity, machineID);
+
+			coinRepo.updateCoins(coin);
+
+			manHinh.displayMessageContinue();
+			String isContinue = banPhim.nhanThongTinNhapVaoYesNo();
+			if (isContinue.equals("N")) {
+				break;
+			}
+
+		}
+	}
+
+	public void deleteCoin() {
+
+		while (true) {
+			manHinh.displayMessageInputCoinID();
+			int coinID = banPhim.nhanThongTinNhapVao();
+
+			CoinsRepository coinRepo = new CoinsRepositoryImpl();
+			coinRepo.deleteCoins(coinID);
+
+			manHinh.displayMessageContinue();
+			String isContinue = banPhim.nhanThongTinNhapVaoYesNo();
+			if (isContinue.equals("N")) {
+				break;
+			}
+		}
+
+	}
 }

@@ -55,4 +55,15 @@ public class Coins {
 		this.machineID = machineID;
 	}
 
+	public String showInfoCoin() {
+		return "Coins [coinID=" + coinID + ", priceTag=" + priceTag + ", quantity=" + quantity + ", machineID="
+				+ machineID + "]";
+	}
+
+	public void setAllAttributeCoins(int priceTag, long quantity, int machineID) {
+		this.priceTag = priceTag;
+		this.quantity = quantity;
+		this.machineID = machineID;
+	}
+
 }

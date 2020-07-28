@@ -17,15 +17,14 @@ public class CashDispenser {
 
 	public CashDispenser() {
 		count = INITIAL_COUNT;
-		coinsRepo=new CoinsRepositoryImpl();
-		listCoins=coinsRepo.findCoinsByMachineID(machineID);	
+		coinsRepo = new CoinsRepositoryImpl();
+		listCoins = coinsRepo.findCoinsByMachineID(machineID);
 
 	}
-	
+
 	public CashDispenser(int machineID) {
 		this();
-		this.machineID=machineID;
-			
+		this.machineID = machineID;
 
 	}
 
@@ -35,14 +34,35 @@ public class CashDispenser {
 
 	}
 
-	public boolean checkCashAvailable(int amount) {
-		int billsRequired = amount / 20;
+//	public boolean checkCashAvailable(int amount) {
+//		int billsRequired = amount / 20;
+//
+//		if (count >= billsRequired) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
 
-		if (count >= billsRequired) {
-			return true;
-		} else {
+	public boolean checkCashAvailable(int amount) {
+		long sumCashDispenser = 0;
+
+		for (int i = 0; i < listCoins.size(); i++) {
+			sumCashDispenser += listCoins.get(i).getPriceTag() * listCoins.get(i).getQuantity();
+		}
+
+		if (amount > sumCashDispenser) {
 			return false;
 		}
+		return true;
 	}
 
+	public boolean checkCashEnoughMoneyDispense() {
+		
+		
+		
+		
+		return true;
+	}
+	
 }

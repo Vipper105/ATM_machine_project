@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Scanner;
 import kits.atmmachine.BanPhim;
 import kits.atmmachine.CashDispenser;
-import kits.atmmachine.Coins2;
 import kits.atmmachine.DatabaseNganHang;
 import kits.atmmachine.HistoryTransaction;
 import kits.atmmachine.ManHinh;
@@ -14,7 +13,6 @@ import kits.atmmachine.YeuCau_NapTien;
 import kits.atmmachine.YeuCau_RutTien;
 import kits.atmmachine.YeuCau_ThayDoiMaPIN;
 import kits.atmmachine.repository.CoinsRepository;
-import kits.atmmachine.repository.CoinsRepositoryImpl;
 import kits.atmmachine.repository.TransactionRepository;
 import kits.atmmachine.repository.TransactionRepositoryImpl;
 
@@ -23,7 +21,6 @@ public class ATMmachine {
 	private int machineID;
 	private String machineName;
 	private int locationID;
-	Coins2 coins;
 	//
 	boolean authenticated;
 
@@ -62,14 +59,6 @@ public class ATMmachine {
 //		lisTransactions = new ArrayList<Transaction>();
 		this.machineName = machineName;
 		this.locationID = locationID;
-	}
-
-	public Coins2 getCoins() {
-		return coins;
-	}
-
-	public void setCoins(Coins2 coins) {
-		this.coins = coins;
 	}
 
 	// set all thuộc tính trừ ID
@@ -308,8 +297,6 @@ public class ATMmachine {
 
 		TransactionRepository accRepo = new TransactionRepositoryImpl();
 		accRepo.addTransaction(transaction, flag);
-
-
 
 	}
 
