@@ -195,9 +195,9 @@ public class ManHinh {
 	public void displayMenuAdminManagerATM_Receipt() {
 
 		System.out.println("==============   Manager Check receipt/transaction/payment  ===========");
-		System.out.println("\t1 - Add transaction by accountID");
-		System.out.println("\t2 - Delete transaction by accountID");
-		System.out.println("\t3 - Update transaction by accountID");
+		System.out.println("\t1 - Delete transaction by accountID");
+		System.out.println("\t2 - Update transaction by accountID");
+		System.out.println("\t3 - Show all transaction");
 		System.out.println("\t4 - Show transaction by accountID");
 		System.out.println("\t5 - Exit");
 
@@ -366,8 +366,19 @@ public class ManHinh {
 
 	// Quản lý coins
 	public void displayMessageInputMachineID() {
-		System.out.println("Input machine ID to display coins:   ");
+		System.out.println("Input machine ID :   ");
 	}
+	
+	public void displayMessageInputPriceTag() {
+		System.out.println("Input price tag :   ");
+	}
+	
+	public void displayMessageInputQuantity() {
+		System.out.println("Input quantity :   ");
+	}
+	
+	
+	
 
 	// In hóa đơn
 	public void displayMessagePrintReceiptSuccess() {

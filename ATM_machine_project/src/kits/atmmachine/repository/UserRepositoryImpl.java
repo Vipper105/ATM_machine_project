@@ -187,19 +187,18 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	// Thêm User
 	public void addUser(User user) {
-		String queryString = "INSERT INTO user value(?,?,?,?,?,?)";
+		String queryString = "INSERT INTO user(userName,age,sex,phoneNumber,address) values(?,?,?,?,?)";
 
 		try {
 			connection = getConnection();
 
 			stmt = (PreparedStatement) connection.prepareStatement(queryString);
 
-			stmt.setLong(1, user.getUserId());
-			stmt.setString(2, user.getUserName());
-			stmt.setInt(3, user.getAge());
-			stmt.setString(4, user.getSex());
-			stmt.setString(5, user.getPhoneNumber());
-			stmt.setString(6, user.getAddress());
+			stmt.setString(1, user.getUserName());
+			stmt.setInt(2, user.getAge());
+			stmt.setString(3, user.getSex());
+			stmt.setString(4, user.getPhoneNumber());
+			stmt.setString(5, user.getAddress());
 
 			stmt.executeUpdate();
 			connection.close();

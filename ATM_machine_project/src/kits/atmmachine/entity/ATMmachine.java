@@ -286,8 +286,6 @@ public class ATMmachine {
 	}
 
 	// Show transaction
-	// ???????? => chưa xong
-
 	void showTransaction(List<Transaction> listTransaction, int soTK) {
 		int transactionID = 0;
 		for (Transaction tran : listTransaction) {
@@ -303,65 +301,15 @@ public class ATMmachine {
 
 	}
 
-//	// ============================== I/O =================================
-//	public void receipt(List<Transaction> listTransaction) {
-//		int transactionID = 0;
-//		// get a string from product
-//		StringBuffer buffer = new StringBuffer();
-//
-////			for (int i = 0; i < listProductChoose.size(); i++) {
-////				buffer.append(listProductChoose.get(i).getName() + listProductChoose.get(i).getPrice()).append("\n");
-////			}
-//
-//		for (Transaction tran : listTransaction) {
-//			buffer.append("Time: " + tran.getDate() + " | ");
-//			buffer.append(" Transaction ID: " + (++transactionID) + " | ");
-//			buffer.append(" Account number: " + tran.getAccountNumber() + " | ");
-//			buffer.append(" Loại giao dịch: " + tran.getLoaiGiaoDich() + " ");
-//			// Gọi lịch sử log của mỗi thằng con
-//			buffer.append(tran.transactionLog()).append("\n");
-//		}
-//
-//		String str = buffer.toString();
-//
-//		writeReceipt(str);
-//
-//	}
-//
-//	// Write Receipt
-//	public void writeReceipt(String data) {
-//		File newfile = new File("C:/Users/PC09/Desktop/exam/text2.txt");
-//		OutputStream os = null;
-//		try {
-//			os = new FileOutputStream(newfile);
-//			os.write(data.getBytes(), 0, data.length());
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				os.close();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//	}
-//
 //	// =========================== // IO =======================================
 
 	// thêm transaction
 	public void addTrans(Transaction transaction, int flag) {
 
-//		while (true) {
-
 		TransactionRepository accRepo = new TransactionRepositoryImpl();
 		accRepo.addTransaction(transaction, flag);
 
-//			manHinh.displayMessageContinue();
-//			String isContinue = banPhim.nhanThongTinNhapVaoYesNo();
-//			if (isContinue.equals("N")) {
-//				break;
-//			}
-//		}
+
 
 	}
 

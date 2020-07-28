@@ -1,14 +1,19 @@
 package kits.atmmachine.entity;
 
 public class Coins {
-	private int coinID; //auto increament
+	private int coinID; // auto increament
 	private int priceTag;
 	private long quantity;
 	private int machineID;
-	
-	
 
 	public Coins() {
+	}
+
+	public Coins(int priceTag, long quantity, int machineID) {
+
+		this.priceTag = priceTag;
+		this.quantity = quantity;
+		this.machineID = machineID;
 	}
 
 	public Coins(int coinID, int priceTag, long quantity, int machineID) {

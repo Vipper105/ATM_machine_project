@@ -9,7 +9,6 @@ import java.util.List;
 
 import kits.atmmachine.config.ConnectionFactory;
 import kits.atmmachine.entity.Coins;
-import kits.atmmachine.entity.User;
 
 public class CoinsRepositoryImpl implements CoinsRepository {
 
@@ -24,8 +23,26 @@ public class CoinsRepositoryImpl implements CoinsRepository {
 	}
 
 	@Override
-	public void addCoins(Coins coinID) {
+	public void addCoins(Coins coin) {
+		String queryString = "INSERT INTO coins(priceTag,quantity,machineID) values(?,?,?)";
 
+		try {
+			connection = getConnection();
+
+			stmt = (PreparedStatement) connection.prepareStatement(queryString);
+
+			stmt.setInt(1, coin.getPriceTag());
+			stmt.setLong(2, coin.getQuantity());
+			stmt.setInt(3, coin.getMachineID());
+
+			stmt.executeUpdate();
+			connection.close();
+			System.out.println("Bạn đã add coins thành công!");
+			
+		} catch (Exception e) {
+			System.out.println("Add Coins thất bại.");
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -34,8 +51,7 @@ public class CoinsRepositoryImpl implements CoinsRepository {
 	}
 
 	@Override
-	public void updateCoins(Coins coinID) {
-		// TODO Auto-generated method stub
+	public void updateCoins(Coins coin) {
 
 	}
 
@@ -44,7 +60,6 @@ public class CoinsRepositoryImpl implements CoinsRepository {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 	@Override
 	public List<Coins> findCoinsByMachineID(int machineID) {

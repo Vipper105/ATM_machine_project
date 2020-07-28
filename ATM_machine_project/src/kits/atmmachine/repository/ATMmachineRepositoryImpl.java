@@ -24,16 +24,15 @@ public class ATMmachineRepositoryImpl implements ATMmachineRepository {
 
 	@Override
 	public void addATM(ATMmachine machine) {
-		String queryString = "INSERT INTO atmmachine value(?,?,?)";
+		String queryString = "INSERT INTO atmmachine(machineName,locationID) value(?,?)";
 
 		try {
 			connection = getConnection();
 
 			stmt = (PreparedStatement) connection.prepareStatement(queryString);
 
-			stmt.setInt(1, machine.getMachineID());
-			stmt.setString(2, machine.getMachineName());
-			stmt.setInt(3, machine.getLocationID());
+			stmt.setString(1, machine.getMachineName());
+			stmt.setInt(2, machine.getLocationID());
 
 			stmt.executeUpdate();
 			connection.close();

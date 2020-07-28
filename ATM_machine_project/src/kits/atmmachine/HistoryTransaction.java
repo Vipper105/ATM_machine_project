@@ -136,4 +136,15 @@ public class HistoryTransaction {
 		this.newPIN = newPIN;
 	}
 
+	public void showHistoryTransaction() {
+		System.out.println(
+				"Số TT\tTên giao dịch\tDescription\t\tTime \t\t\tAccountID\tAccountReceived \tMoneySend\t\tAddedMoney \tWithdrawMoney"
+						+ "\t\tOldPIN \t\tNewPIN");
+		System.out.printf("%-7s%-20s%-10s%-38s%-20s%-20s%-19s%-22s%-22s%-17s%-5s\n", transactionID,
+				transactionID, description, date_transaction,
+				accountID, accountReceived, moneySend,
+				addedMoney, withdrawMoney, oldPIN,
+				newPIN);
+	}
+
 }

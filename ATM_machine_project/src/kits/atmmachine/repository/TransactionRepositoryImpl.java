@@ -60,7 +60,6 @@ public class TransactionRepositoryImpl implements TransactionRepository {
 			connection = getConnection();
 
 			stmt = (PreparedStatement) connection.prepareStatement(queryString);
-//			stmt.setLong(1, transaction.getTransactionID());
 			stmt.setString(1, transaction.getLoaiGiaoDich());
 			stmt.setString(2, transaction.getDescription());
 			stmt.setString(3, transaction.getDate().toString());

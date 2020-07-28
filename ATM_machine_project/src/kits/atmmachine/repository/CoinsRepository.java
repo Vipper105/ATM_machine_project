@@ -6,11 +6,11 @@ import kits.atmmachine.entity.Coins;
 
 public interface CoinsRepository {
 
-	void addCoins(Coins coinID);
+	void addCoins(Coins coin);
 
 	void deleteCoins(long coinID);
 
-	void updateCoins(Coins coinID);
+	void updateCoins(Coins coin);
 
 	// Show tất cả
 	List<Coins> findAllCoins();

@@ -120,22 +120,21 @@ public class AccountRepositoryImpl implements AccountRepository {
 	@Override
 	// Đẩy thông tin nhập vào xuống DB
 	public void addAccount(Account acc) {
-		String queryString = "INSERT INTO account value(?,?,?,?,?,?,?,?,?)";
+		String queryString = "INSERT INTO account(pinCode,accountName,availableBalance,totalBalance,accountTypeID,userID,roleID,locationID) value(?,?,?,?,?,?,?,?)";
 
 		try {
 			connection = getConnection();
 
 			stmt = (PreparedStatement) connection.prepareStatement(queryString);
 
-			stmt.setLong(1, acc.getSoTK());
-			stmt.setInt(2, acc.getPin());
-			stmt.setString(3, acc.getNameAccount());
-			stmt.setDouble(4, acc.getSoDuKhaDung());
-			stmt.setDouble(5, acc.getTongSoDu());
-			stmt.setInt(6, acc.getAccountTypeID());
-			stmt.setLong(7, acc.getUserID());
-			stmt.setInt(8, acc.getRoleID());
-			stmt.setInt(9, acc.getLocationID());
+			stmt.setInt(1, acc.getPin());
+			stmt.setString(2, acc.getNameAccount());
+			stmt.setDouble(3, acc.getSoDuKhaDung());
+			stmt.setDouble(4, acc.getTongSoDu());
+			stmt.setInt(5, acc.getAccountTypeID());
+			stmt.setLong(6, acc.getUserID());
+			stmt.setInt(7, acc.getRoleID());
+			stmt.setInt(8, acc.getLocationID());
 
 			stmt.executeUpdate();
 			connection.close();

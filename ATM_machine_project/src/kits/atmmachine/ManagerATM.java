@@ -216,7 +216,6 @@ public class ManagerATM {
 			int userID = banPhim.nhanThongTinNhapVao();
 			UserRepository userRepo = new UserRepositoryImpl();
 
-//    			userRepo.delete(userID);
 			User us = userRepo.findUserById(userID);
 			// Nhập thông tin bạn muốn edit
 			manHinh.displayMessageEditUser();
@@ -620,10 +619,6 @@ public class ManagerATM {
 			choice = banPhim.nhanThongTinNhapVao();
 			switch (choice) {
 			case 1:
-				// add transaction
-				break;
-
-			case 2:
 				// delete transaction
 				manHinh.displayInputDeleteTransactionID();
 				long transactionID = banPhim.nhanThongTinNhapVaoLong();
@@ -631,21 +626,21 @@ public class ManagerATM {
 
 				break;
 
-			case 3:
+			case 2:
 				// update transaction
 				updateTransaction();
 				break;
 
-			case 4:
+			case 3:
 				// show transaction
 				databaseNganHang.showHistoryTransaction();
 				break;
-			case 5:
+			case 4:
 				// show transaction by accountID
-
+				showTransactionByID();
 				break;
 
-			case 6:
+			case 5:
 				// exit
 				isContinue = false;
 				break;
@@ -716,11 +711,20 @@ public class ManagerATM {
 
 	}
 
+	public void showTransactionByID() {
+
+		manHinh.displayInputTransactionID();
+		long transactionID = banPhim.nhanThongTinNhapVaoLong();
+		TransactionRepository transRepo = new TransactionRepositoryImpl();
+		HistoryTransaction his = transRepo.findTransactionById(transactionID);
+		his.showHistoryTransaction();
+
+	}
+
 	// ========================== // Quản lý Transaction ==========================
 
 	public void managerCoinsOfMachine() {
-		
-		
+
 		boolean isContinue = true;
 		int choice;
 		do {
@@ -731,6 +735,7 @@ public class ManagerATM {
 			switch (choice) {
 			case 1:
 				// add coins
+				addMoneyCoin();
 				break;
 
 			case 2:
@@ -740,7 +745,7 @@ public class ManagerATM {
 
 			case 3:
 				// update coins
-				
+
 				break;
 
 			case 4:
@@ -757,7 +762,7 @@ public class ManagerATM {
 		} while (isContinue);
 
 	}
-	
+
 	public void showCurrentListCoin() {
 		while (true) {
 			manHinh.displayMessageInputMachineID();
@@ -772,11 +777,37 @@ public class ManagerATM {
 //				System.out.println(listAccount.get(i).showInfoAccount());
 //			}
 
+			manHinh.displayMessageContinue();
 			String isContinue = banPhim.nhanThongTinNhapVaoYesNo();
 			if (isContinue.equals("N")) {
 				break;
 			}
 		}
 	}
-	
+
+	public void addMoneyCoin() {
+		while (true) {
+			System.out.println("===  Thêm coins ===");
+			manHinh.displayMessageInputPriceTag();
+			int priceTag = banPhim.nhanThongTinNhapVao();
+
+			manHinh.displayMessageInputQuantity();
+			long quantity = banPhim.nhanThongTinNhapVaoLong();
+
+			manHinh.displayMessageInputMachineID();
+			int machineID = banPhim.nhanThongTinNhapVao();
+
+			Coins coin = new Coins(priceTag, quantity, machineID);
+
+			CoinsRepository coinRepo = new CoinsRepositoryImpl();
+			coinRepo.addCoins(coin);
+
+			manHinh.displayMessageContinue();
+			String isContinue = banPhim.nhanThongTinNhapVaoYesNo();
+			if (isContinue.equals("N")) {
+				break;
+			}
+		}
+	}
+
 }

@@ -20,7 +20,6 @@ public class YeuCau_ThayDoiMaPIN extends Transaction {
 
 		loaiGiaoDich = "Change PIN";
 		super.date = new Date();
-//		transactionID++;
 		//
 		this.oldPIN = oldPIN;
 		this.newPIN = newPIN;
@@ -45,7 +44,6 @@ public class YeuCau_ThayDoiMaPIN extends Transaction {
 
 	@Override
 	public void execute() {
-
 		super.getDatabaseNganHang().changePIN(oldPIN, newPIN, super.getAccountNumber());
 	}
 
