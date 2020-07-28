@@ -56,7 +56,7 @@ public class CashDispenser {
 		return sumCashDispenser;
 	}
 
-	public void dispenserWithMinimumCoin(int amount, int machineID) {
+	public void dispenserWithMinimumCoin(double amount, int machineID) {
 		listCoins = coinsRepo.findCoinsByMachineID(machineID);
 
 		List<Integer> listMinimumCoin = new ArrayList<Integer>();
@@ -82,9 +82,8 @@ public class CashDispenser {
 			while (arrPriceTag[i] <= amount) {
 				listMinimumCoin.add(arrPriceTag[i]);
 				amount = amount - arrPriceTag[i];
-				arrQuantityOfPriceTag[i]++;
-
-//				count++;
+				arrQuantityOfPriceTag[i]--;
+        //		count++;
 			}
 		}
 
@@ -92,9 +91,14 @@ public class CashDispenser {
 		for (int i = 0; i < listMinimumCoin.size(); i++) {
 			System.out.print(listMinimumCoin.get(i) + ", ");
 		}
-
+		System.out.println();
 		// display quantity of priceTag after payment
-
+		for (int i = 0; i < arrQuantityOfPriceTag.length; i++) {
+			System.out.print(arrQuantityOfPriceTag[i] + ", ");
+			// update to DB
+		}
+		System.out.println();
+		
 		return;
 	}
 

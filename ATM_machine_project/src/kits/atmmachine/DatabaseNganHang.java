@@ -30,7 +30,7 @@ public class DatabaseNganHang {
 //
 //		Account tk1 = new Account(0001, 1111, "Huy", 1000, 1500, 1, 1, 1, 1);
 //		Account tk2 = new Account(0002, 1111, "Nghĩa", 500, 1000, 1, 2, 2, 1);
-		
+
 //		listAccount.add(tk1);
 //		listAccount.add(tk2);
 
@@ -110,9 +110,11 @@ public class DatabaseNganHang {
 			taiKhoanKhachHang.setSoDuKhaDung(soDuKhaDung);
 			taiKhoanKhachHang.setTongSoDu(soDoTotal);
 			// update xuống DB
+//			System.out.println("Withdrawal succsessfully");
+//			System.out.println("Số dư hiện tại : " + soDuKhaDung);
 			accountRepo.updateAccount(taiKhoanKhachHang);
 		} else {
-			System.out.println("Số dư không đủ để rút");
+			System.out.println("Balance is not enough money for Withdrawal");
 			return;
 		}
 
@@ -209,7 +211,7 @@ public class DatabaseNganHang {
 
 		TransactionRepository tranRepo = new TransactionRepositoryImpl();
 		List<HistoryTransaction> list = tranRepo.findAllTransaction();
-		
+
 		System.out.println(
 				"Số TT\tTên giao dịch\tDescription\t\tTime \t\t\tAccountID\tAccountReceived \tMoneySend\t\tAddedMoney \tWithdrawMoney"
 						+ "\t\tOldPIN \t\tNewPIN");
@@ -266,18 +268,17 @@ public class DatabaseNganHang {
 	}
 
 	// =========================== ///// IO =======================================
-	
+
 	// Show info coin of ATM machine
 	public void showListCoin(List<Coins> lisCoins) {
-		System.out.printf("%-15s%-20s%-20s%15s\n","Coin ID","Price Tag","Quantity","Machine ID");
-		for(Coins coin:lisCoins) {
-			System.out.print(coin.getCoinID()+"\t\t");
-			System.out.print(coin.getPriceTag()+"\t\t\t");
-			System.out.print(coin.getQuantity()+"\t\t\t");
-			System.out.print(coin.getMachineID()+"\n");
-			
+		System.out.printf("%-15s%-20s%-20s%15s\n", "Coin ID", "Price Tag", "Quantity", "Machine ID");
+		for (Coins coin : lisCoins) {
+			System.out.print(coin.getCoinID() + "\t\t");
+			System.out.print(coin.getPriceTag() + "\t\t\t");
+			System.out.print(coin.getQuantity() + "\t\t\t");
+			System.out.print(coin.getMachineID() + "\n");
+
 		}
 	}
-	
 
 }

@@ -118,7 +118,7 @@ public class ATMmachine {
 					// Xem số dư
 					transaction.execute();
 					//
-				    System.out.println(cashDispenser.sumCoinsInATM(machineID));
+				   // System.out.println(cashDispenser.sumCoinsInATM(machineID));
 //					lisTransactions.add(transaction);
 					flag = 1;
 					addTrans(transaction, flag);
@@ -158,7 +158,10 @@ public class ATMmachine {
 
 					transaction = new YeuCau_RutTien(soTK, databaseNganHang, manHinh, banPhim, soTienRut);
 					// Rút tiền
+					System.out.println("Tổng số tiền rút (Total Withdrawal): "+soTienRut);
 					transaction.execute();
+
+					cashDispenser.dispenserWithMinimumCoin(soTienRut, machineID);
 					//
 //					lisTransactions.add(transaction);
 					//
