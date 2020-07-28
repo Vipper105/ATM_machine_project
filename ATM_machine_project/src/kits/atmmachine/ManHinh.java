@@ -246,7 +246,7 @@ public class ManHinh {
 	public void displayInputAtmID() {
 		System.out.println("Input atm id: ");
 	}
-	
+
 	public void displayInputMayAtm() {
 		System.out.println("Please choose ATM machine (1->3): ");
 	}
@@ -335,7 +335,7 @@ public class ManHinh {
 	public void displayMessageInputDescription() {
 		System.out.println("Nhập description: ");
 	}
-	
+
 	public void displayMessageInputDateTransaction() {
 		System.out.println("Nhập date_transaction: ");
 	}
@@ -362,6 +362,11 @@ public class ManHinh {
 
 	public void displayMessageInputNewPIN() {
 		System.out.println("Nhập new PIN : ");
+	}
+
+	// Quản lý coins
+	public void displayMessageInputMachineID() {
+		System.out.println("Input machine ID to display coins:   ");
 	}
 
 	// In hóa đơn

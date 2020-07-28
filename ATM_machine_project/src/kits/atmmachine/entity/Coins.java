@@ -5,6 +5,8 @@ public class Coins {
 	private int priceTag;
 	private long quantity;
 	private int machineID;
+	
+	
 
 	public Coins() {
 	}

@@ -13,6 +13,8 @@ import kits.atmmachine.YeuCau_HienThiSoDu;
 import kits.atmmachine.YeuCau_NapTien;
 import kits.atmmachine.YeuCau_RutTien;
 import kits.atmmachine.YeuCau_ThayDoiMaPIN;
+import kits.atmmachine.repository.CoinsRepository;
+import kits.atmmachine.repository.CoinsRepositoryImpl;
 import kits.atmmachine.repository.TransactionRepository;
 import kits.atmmachine.repository.TransactionRepositoryImpl;
 
@@ -36,6 +38,8 @@ public class ATMmachine {
 
 //	List<Transaction> lisTransactions;
 
+	CoinsRepository coinsRepo;
+
 	Scanner sc = new Scanner(System.in);
 
 	public ATMmachine() {
@@ -49,18 +53,15 @@ public class ATMmachine {
 
 		transaction = null;
 //		coins=new Coins();
-
 //		lisTransactions = new ArrayList<Transaction>();
 
 	}
 
 	public ATMmachine(String machineName, int locationID) {
 		this();
-
 //		lisTransactions = new ArrayList<Transaction>();
 		this.machineName = machineName;
 		this.locationID = locationID;
-
 	}
 
 	public Coins2 getCoins() {
@@ -129,7 +130,6 @@ public class ATMmachine {
 					transaction.execute();
 					//
 //					lisTransactions.add(transaction);
-					//
 					flag = 1;
 					addTrans(transaction, flag);
 					isContinue = true;

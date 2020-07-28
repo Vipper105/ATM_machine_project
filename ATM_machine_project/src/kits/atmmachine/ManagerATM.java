@@ -6,12 +6,14 @@ import java.util.Scanner;
 
 import kits.atmmachine.entity.ATMmachine;
 import kits.atmmachine.entity.Account;
-import kits.atmmachine.entity.Transaction;
+import kits.atmmachine.entity.Coins;
 import kits.atmmachine.entity.User;
 import kits.atmmachine.repository.ATMmachineRepository;
 import kits.atmmachine.repository.ATMmachineRepositoryImpl;
 import kits.atmmachine.repository.AccountRepository;
 import kits.atmmachine.repository.AccountRepositoryImpl;
+import kits.atmmachine.repository.CoinsRepository;
+import kits.atmmachine.repository.CoinsRepositoryImpl;
 import kits.atmmachine.repository.TransactionRepository;
 import kits.atmmachine.repository.TransactionRepositoryImpl;
 import kits.atmmachine.repository.UserRepository;
@@ -77,8 +79,7 @@ public class ManagerATM {
 								break;
 
 							case 4:
-								manHinh.displayMenuAdminManagerATM_CashDispenser();
-								//
+								managerCoinsOfMachine();
 								break;
 
 							case 5:
@@ -717,4 +718,65 @@ public class ManagerATM {
 
 	// ========================== // Quản lý Transaction ==========================
 
+	public void managerCoinsOfMachine() {
+		
+		
+		boolean isContinue = true;
+		int choice;
+		do {
+			manHinh.displayMenuAdminManagerATM_CashDispenser();
+
+			//
+			choice = banPhim.nhanThongTinNhapVao();
+			switch (choice) {
+			case 1:
+				// add coins
+				break;
+
+			case 2:
+				// delete coins
+
+				break;
+
+			case 3:
+				// update coins
+				
+				break;
+
+			case 4:
+				// show coins by accountID
+				showCurrentListCoin();
+
+				break;
+
+			case 5:
+				// exit
+				isContinue = false;
+				break;
+			}
+		} while (isContinue);
+
+	}
+	
+	public void showCurrentListCoin() {
+		while (true) {
+			manHinh.displayMessageInputMachineID();
+			int machineID = banPhim.nhanThongTinNhapVao();
+
+			System.out.println("Danh sách coin hiện tại");
+			CoinsRepository coinsRepo = new CoinsRepositoryImpl();
+			List<Coins> lisCoins = coinsRepo.findCoinsByMachineID(machineID);
+			databaseNganHang.showListCoin(lisCoins);
+//			
+//			for (int i = 0; i < listAccount.size(); i++) {
+//				System.out.println(listAccount.get(i).showInfoAccount());
+//			}
+
+			String isContinue = banPhim.nhanThongTinNhapVaoYesNo();
+			if (isContinue.equals("N")) {
+				break;
+			}
+		}
+	}
+	
 }

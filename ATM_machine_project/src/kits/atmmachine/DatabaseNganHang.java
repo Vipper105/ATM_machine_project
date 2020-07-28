@@ -7,7 +7,7 @@ import java.io.OutputStream;
 import java.util.List;
 
 import kits.atmmachine.entity.Account;
-import kits.atmmachine.entity.Transaction;
+import kits.atmmachine.entity.Coins;
 import kits.atmmachine.repository.AccountRepository;
 import kits.atmmachine.repository.AccountRepositoryImpl;
 import kits.atmmachine.repository.TransactionRepository;
@@ -209,8 +209,7 @@ public class DatabaseNganHang {
 
 		TransactionRepository tranRepo = new TransactionRepositoryImpl();
 		List<HistoryTransaction> list = tranRepo.findAllTransaction();
-
-		String str = "";
+		
 		System.out.println(
 				"Số TT\tTên giao dịch\tDescription\t\tTime \t\t\tAccountID\tAccountReceived \tMoneySend\t\tAddedMoney \tWithdrawMoney"
 						+ "\t\tOldPIN \t\tNewPIN");
@@ -226,7 +225,6 @@ public class DatabaseNganHang {
 
 	// ================================== I/O ====================================
 	public void receipt(List<HistoryTransaction> listTransaction) {
-		int transactionID = 0;
 		// get a string from product
 		StringBuffer buffer = new StringBuffer();
 
@@ -268,5 +266,18 @@ public class DatabaseNganHang {
 	}
 
 	// =========================== ///// IO =======================================
+	
+	// Show info coin of ATM machine
+	public void showListCoin(List<Coins> lisCoins) {
+		System.out.printf("%-15s%-20s%-20s%15s\n","Coin ID","Price Tag","Quantity","Machine ID");
+		for(Coins coin:lisCoins) {
+			System.out.print(coin.getCoinID()+"\t\t");
+			System.out.print(coin.getPriceTag()+"\t\t\t");
+			System.out.print(coin.getQuantity()+"\t\t\t");
+			System.out.print(coin.getMachineID()+"\n");
+			
+		}
+	}
+	
 
 }

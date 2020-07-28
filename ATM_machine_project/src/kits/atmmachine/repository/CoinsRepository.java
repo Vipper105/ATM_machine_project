@@ -19,5 +19,5 @@ public interface CoinsRepository {
 	Coins findCoinsById(int coinID);
 
 	// Hiển thị thông tin coins khi nhập vào machineID
-	Coins findCoinsByMachineID(int machineID);
+	List<Coins> findCoinsByMachineID(int machineID);
 }
