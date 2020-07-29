@@ -167,7 +167,7 @@ public class ManagerATM {
 			default:
 				System.out.println("Wrong choice");
 			}
-			
+
 		} while (isContinue);
 	}
 
@@ -790,7 +790,7 @@ public class ManagerATM {
 			manHinh.displayMessageInputMachineID();
 			int machineID = banPhim.nhanThongTinNhapVao();
 
-			System.out.println("Danh sách coin hiện tại");
+			System.out.println("The current list COINS");
 			CoinsRepository coinsRepo = new CoinsRepositoryImpl();
 			List<Coins> lisCoins = coinsRepo.findCoinsByMachineID(machineID);
 			databaseNganHang.showListCoin(lisCoins);
@@ -809,7 +809,7 @@ public class ManagerATM {
 
 	public void addMoneyCoin() {
 		while (true) {
-			System.out.println("===  Thêm coins ===");
+			System.out.println("===  Add more COINS ===");
 			manHinh.displayMessageInputPriceTag();
 			int priceTag = banPhim.nhanThongTinNhapVao();
 
