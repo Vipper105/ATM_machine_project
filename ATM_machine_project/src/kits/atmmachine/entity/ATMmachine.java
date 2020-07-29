@@ -161,6 +161,8 @@ public class ATMmachine {
 							// Exit
 							isOnDrawMonney = false;
 							break;
+						default:
+							System.out.println("Wrong choice");
 						}
 					}
 
@@ -253,7 +255,7 @@ public class ATMmachine {
 					break;
 
 				default:
-
+					System.out.println("Wrong choice");
 				}
 
 				// continue ??

@@ -9,7 +9,8 @@ import kits.atmmachine.entity.ATMmachine;
 import kits.atmmachine.entity.Account;
 import kits.atmmachine.entity.Coins;
 import kits.atmmachine.entity.User;
-import kits.atmmachine.exception.AccountNumberCheckingException;
+import kits.atmmachine.exception.ExceptionMessage;
+import kits.atmmachine.exception.ValidateException;
 import kits.atmmachine.repository.ATMmachineRepository;
 import kits.atmmachine.repository.ATMmachineRepositoryImpl;
 import kits.atmmachine.repository.AccountRepository;
@@ -40,45 +41,19 @@ public class ManagerATM {
 		banPhim = new BanPhim();
 
 	}
-	// Exception input account number
-	public int validateInputAccountNumber() {
-		int soTK = 0;
-		manHinh.displayMessageNhapSoTK();
-
-		boolean con = true;
-
-		while (con) {
-			try {
-				Scanner sc = new Scanner(System.in);
-				soTK = sc.nextInt();
-				if (soTK > 0) {
-					con = false;
-				} else {
-					throw new AccountNumberCheckingException("Account number is not allow less than 0");
-				}
-
-			} catch (InputMismatchException ex) {
-				System.out.println("Account number should be a number");
-			} catch (AccountNumberCheckingException e) {
-				System.out.println(e.getMessage());
-			}
-		}
-		return soTK;
-
-	}
 
 	public void runningSystem() {
 		Scanner sc = new Scanner(System.in);
 		boolean isContinueAll = true;
+		ValidateException validateException = new ValidateException();
 		while (isContinueAll) {
 
 			int soTK = 0;
 			// Exception input account number
-			soTK = validateInputAccountNumber();
+			soTK = validateException.validateInputAccountNumber();
 
 			if (databaseNganHang.validateUser(soTK)) {
-				System.out.println("Nhập PIN/Password: ");
-				int PIN = sc.nextInt();
+				int PIN = validateException.validateInputPINCode();
 				if (databaseNganHang.authenticatedUser(soTK, PIN)) {
 					// đang nhập thành công
 					manHinh.displayMessageLoginSuccessfull();
@@ -123,7 +98,7 @@ public class ManagerATM {
 								break;
 
 							default:
-
+								System.out.println("Wrong choice.");
 							}
 
 							if (isContinue == false) {
@@ -189,7 +164,10 @@ public class ManagerATM {
 				// exit
 				isContinue = false;
 				break;
+			default:
+				System.out.println("Wrong choice");
 			}
+			
 		} while (isContinue);
 	}
 
@@ -335,6 +313,8 @@ public class ManagerATM {
 				// exit
 				isContinue = false;
 				break;
+			default:
+				System.out.println("Wrong choice");
 			}
 		} while (isContinue);
 	}
@@ -488,6 +468,8 @@ public class ManagerATM {
 				// exit
 				isContinue = false;
 				break;
+			default:
+				System.out.println("Wrong choice");
 			}
 		} while (isContinue);
 	}
@@ -676,6 +658,8 @@ public class ManagerATM {
 				// exit
 				isContinue = false;
 				break;
+			default:
+				System.out.println("Wrong choice");
 			}
 		} while (isContinue);
 	}
@@ -794,6 +778,8 @@ public class ManagerATM {
 				// exit
 				isContinue = false;
 				break;
+			default:
+				System.out.println("Wrong choice");
 			}
 		} while (isContinue);
 

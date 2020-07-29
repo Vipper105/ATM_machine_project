@@ -250,7 +250,7 @@ public class DatabaseNganHang {
 
 	}
 
-	// Write Receipt
+	//=================    Write Receipt   =======================
 	public void writeReceipt(String data) {
 		File newfile = new File("C:/Users/PC09/Desktop/exam/text2.txt");
 		OutputStream os = null;
