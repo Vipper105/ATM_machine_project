@@ -40,21 +40,19 @@ public class ManagerATM {
 		banPhim = new BanPhim();
 
 	}
-
+	// Exception input account number
 	public int validateInputAccountNumber() {
-
 		int soTK = 0;
-
 		manHinh.displayMessageNhapSoTK();
 
-		boolean loop = true;
+		boolean con = true;
 
-		while (loop) {
+		while (con) {
 			try {
 				Scanner sc = new Scanner(System.in);
 				soTK = sc.nextInt();
 				if (soTK > 0) {
-					loop = false;
+					con = false;
 				} else {
 					throw new AccountNumberCheckingException("Account number is not allow less than 0");
 				}
@@ -75,7 +73,7 @@ public class ManagerATM {
 		while (isContinueAll) {
 
 			int soTK = 0;
-
+			// Exception input account number
 			soTK = validateInputAccountNumber();
 
 			if (databaseNganHang.validateUser(soTK)) {

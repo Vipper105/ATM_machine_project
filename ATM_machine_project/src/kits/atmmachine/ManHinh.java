@@ -7,122 +7,122 @@ public class ManHinh {
 	}
 
 	public void displayMessageNhapSoTK() {
-		System.out.println("Mời bạn nhập số tài khoản : ");
+		System.out.println("Input account number of card : ");
 	}
 
 	// change PIN
 	public void displayMessageNhapPIN() {
-		System.out.println("Mời bạn nhập mã PIN : ");
+		System.out.println("Input PIN code : ");
 	}
 
 	public void displayMessageEnterOldPIN() {
-		System.out.println("Mời nhập bạn mã PIN cũ : ");
+		System.out.println("Input old PIN : ");
 	}
 
 	public void displayMessageErrorOldPIN() {
-		System.out.println("Mã PIN cũ không chính xác : ");
+		System.out.println("Old PIN is not exactly : ");
 	}
 
 	public void displayMessageEnterNewPIN() {
-		System.out.println("Mời nhập bạn mã PIN mới : ");
+		System.out.println("Input new PIN : ");
 	}
 
 	public void displayMessageSameOldPIN_NewPIN() {
-		System.out.println("Mã PIN cũ và mới không được trùng nhau: ");
+		System.out.println("Old PIN and new PIN should be not duplicate. ");
 	}
 
 	public void displayMessageChangePinSuccess() {
-		System.out.println("Mã PIN đã được đổi thành công! ");
+		System.out.println("PIN code changed successfully! ");
 	}
 
 	public void displayMessageLoginSuccessfull() {
-		System.out.println("Bạn đã đang nhập thành công");
+		System.out.println("Login successfully.");
 	}
 
 	public void displayMessageWrongPINcode() {
-		System.out.println("Bạn đã nhập sai mã PIN");
+		System.out.println("Wrong PIN code.");
 	}
 
 	public void displayNotExistedTaiKhoanKhachHang() {
-		System.out.println("Tài khoản này không tồn tại");
+		System.out.println("Account is not existed");
 	}
 
 	public void displayInputSoTienMuonRut() {
-		System.out.println("Nhập số tiền muốn rút");
+		System.out.println("Input Withdrawal money: ");
 	}
 
 	public void displayMainMenu() {
 		System.out.println("============================================");
 		System.out.println("Main menu");
 
-		System.out.println("\t1 - Xem số dư");
-		System.out.println("\t2 - Rút tiền");
-		System.out.println("\t3 - Nạp tiền vào tài khoản");
-		System.out.println("\t4 - Chuyển tiền");
-		System.out.println("\t5 - Đổi mã PIN");
+		System.out.println("\t1 - Check balance");
+		System.out.println("\t2 - Withdrawal");
+		System.out.println("\t3 - Deposit");
+		System.out.println("\t4 - Transfer fund");
+		System.out.println("\t5 - Change PIN");
 		System.out.println("\t6 - Show transaction");
 		System.out.println("\t7 - Exit");
 
-		System.out.println("Nhập vào lựa chọn");
+		System.out.println("Input your choice: ");
 
 	}
 
 	// get balance
 	public void displaySoDoKhDung() {
-		System.out.print("\nSố dư khả dụng của bạn là: ");
+		System.out.print("\nAvailable balance: ");
 	}
 
 	public void displayTongSoDo() {
-		System.out.print("\nTổng số dư của bạn là: ");
+		System.out.print("\nTotal balance: ");
 	}
 
 	public void displayMenuRutTien() {
 		System.out.println("============================================");
-		System.out.println("Menu rút tiền");
+		System.out.println("Menu Withdrawal");
 		System.out.println("\t1 - $10" + "\t\t" + " 5 - $500");
 		System.out.println("\t2 - $50" + "\t\t" + " 6 - $1000");
 		System.out.println("\t3 - $100" + "\t" + " 7 - $2000");
-		System.out.println("\t4 - $200" + "\t" + " 8 - Thoát giao dịch");
-		System.out.println("Nhập lựa chọn: ");
+		System.out.println("\t4 - $200" + "\t" + " 8 - Exit");
+		System.out.println("Input your choice: ");
 
 	}
 
 	public void displayAddMoney() {
-		System.out.print("\nMời bạn nhập số tiền muốn thêm vào tài khoản: ");
+		System.out.print("\nInput deposit : ");
 
 	}
 
 	public void displayMessageContinue() {
-		System.out.println("\nBạn có muốn tiếp tục hay không? Y/N ");
+		System.out.println("\nDo you wanna continue? Y/N ");
 	}
 
 	// transfer money
 	public void displayMessageTransferedUser() {
-		System.out.print("\nMời bạn nhập vào user muốn chuyển tiền: ");
+		System.out.print("\nInput received user : ");
 	}
 
 	public void displayMessageInputTransferAmount() {
-		System.out.print("\nMời bạn nhập vào số tiền muốn chuyển: ");
+		System.out.print("\nInput money want to transfer : ");
 	}
 
 	public void displayMessageBalanceAvailable_UserSend() {
-		System.out.print("\nSố dư khả dụng của user gửi là: ");
+		System.out.print("\nAvailable balance of user send : ");
 	}
 
 	public void displayMessageBalanceAvailable_UserReceive() {
-		System.out.print("\nSố dư khả dụng của user nhận là: ");
+		System.out.print("\nAvailable balance of receive user : ");
 	}
 
 	public void displayMessageBalanceTotal_UserSend() {
-		System.out.print("\nTổng số dư của user gửi là: ");
+		System.out.print("\nTotal balance of user send : ");
 	}
 
 	public void displayMessageBalanceTotal_UserReceive() {
-		System.out.print("\nTổng số dư của user nhận là: ");
+		System.out.print("\nTotal balance of receive user : ");
 	}
 
 	public void displayMessageErrorNotEnoughMoney() {
-		System.out.println("\nSố dư khả dụng của bạn không đủ.");
+		System.out.println("\nAvailable balance is NOT enough.");
 	}
 
 	public void displayMenuAdmin() {
@@ -136,7 +136,7 @@ public class ManHinh {
 		System.out.println("\t5. Manager Payment/Transaction");
 		System.out.println("\t6. Exit");
 
-		System.out.println("Nhập vào lựa chọn: ");
+		System.out.println("Input your choice : ");
 
 	}
 
@@ -149,7 +149,7 @@ public class ManHinh {
 		System.out.println("\t5 - Find ATM by ID");
 		System.out.println("\t6 - Exit");
 
-		System.out.println("Nhập vào lựa chọn: ");
+		System.out.println("Input your choice : ");
 
 	}
 
@@ -162,7 +162,7 @@ public class ManHinh {
 		System.out.println("\t4 - Show User");
 		System.out.println("\t5 - Exit");
 
-		System.out.println("Nhập vào lựa chọn: ");
+		System.out.println("Input your choice : ");
 
 	}
 
@@ -190,7 +190,7 @@ public class ManHinh {
 		System.out.println("\t5 - Show all kind money");
 		System.out.println("\t6 - Exit");
 
-		System.out.println("Nhập vào lựa chọn: ");
+		System.out.println("Input your choice: ");
 
 	}
 
@@ -203,13 +203,13 @@ public class ManHinh {
 		System.out.println("\t4 - Show transaction by accountID");
 		System.out.println("\t5 - Exit");
 
-		System.out.println("Nhập vào lựa chọn: ");
+		System.out.println("Input your choice: ");
 
 	}
 
 	// In receipt
 	public void displayAskPrintReceipt() {
-		System.out.println(" Bạn có muốn in hóa đơn không ? Y/N");
+		System.out.println("Do you wanna print receipt ? Y/N");
 	}
 
 	// Thêm user /edit
@@ -235,30 +235,30 @@ public class ManHinh {
 
 	// Edit user
 	public void displayMessageEditUser() {
-		System.out.println("==============   Nhập thông tin bạn muốn Edit  =============== ");
+		System.out.println("==============   Input info to Edit  =============== ");
 	}
 
 	// Delete user
 	public void displayInputUserID() {
-		System.out.println("Input user id: ");
+		System.out.println("Input user ID : ");
 	}
 
 	// CRUD ATM machine
 	// add atm
 	public void displayInputAtmID() {
-		System.out.println("Input atm id: ");
+		System.out.println("Input ATM ID: ");
 	}
 
 	public void displayInputMayAtm() {
-		System.out.println("Please choose ATM machine (1->3): ");
+		System.out.println("Please choose ATM machine (1->5): ");
 	}
 
 	public void displayInputAtmName() {
-		System.out.println("Input atm name: ");
+		System.out.println("Input ATM name: ");
 	}
 
 	public void displayInputAtmLocation() {
-		System.out.println("Input atm location: ");
+		System.out.println("Input ATM location: ");
 	}
 
 	// delete atm
@@ -312,7 +312,7 @@ public class ManHinh {
 	}
 
 	public void displayMessageNhapEdit() {
-		System.out.println("Nhập thông tin bạn muốn Edit : ");
+		System.out.println("Input info want to Edit : ");
 	}
 
 //	private long transactionID;
@@ -331,39 +331,39 @@ public class ManHinh {
 	}
 
 	public void displayMessageInputTypeTransaction() {
-		System.out.println("Nhập loại giao dich : ");
+		System.out.println("Transaction Type : ");
 	}
 
 	public void displayMessageInputDescription() {
-		System.out.println("Nhập description: ");
+		System.out.println("Input Description : ");
 	}
 
 	public void displayMessageInputDateTransaction() {
-		System.out.println("Nhập date_transaction: ");
+		System.out.println("Input date transaction date : ");
 	}
 
 	public void displayMessageInputAccountReceived() {
-		System.out.println("Nhập account received : ");
+		System.out.println("Input received account : ");
 	}
 
 	public void displayMessageInputMoneySend() {
-		System.out.println("Nhập money Send : ");
+		System.out.println("Input money Send : ");
 	}
 
 	public void displayMessageInputAddedMoney() {
-		System.out.println("Nhập added Money : ");
+		System.out.println("Input deposit : ");
 	}
 
 	public void displayMessageInputWithdrawMoney() {
-		System.out.println("Nhập withdraw Money : ");
+		System.out.println("Input withdrawl Money : ");
 	}
 
 	public void displayMessageInputOldPIN() {
-		System.out.println("Nhập old PIN : ");
+		System.out.println("Input old PIN : ");
 	}
 
 	public void displayMessageInputNewPIN() {
-		System.out.println("Nhập new PIN : ");
+		System.out.println("Input new PIN : ");
 	}
 
 	// Quản lý coins

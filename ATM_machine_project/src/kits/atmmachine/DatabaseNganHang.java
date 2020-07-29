@@ -35,6 +35,7 @@ public class DatabaseNganHang {
 //		listAccount.add(tk2);
 
 		accountRepo = new AccountRepositoryImpl();
+		// get DB
 		listAccount = accountRepo.findAllAccount();
 
 		manHinh = new ManHinh();
