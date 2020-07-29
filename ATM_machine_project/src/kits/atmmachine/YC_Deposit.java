@@ -4,15 +4,15 @@ import java.util.Date;
 
 import kits.atmmachine.entity.Transaction;
 
-public class YeuCau_NapTien extends Transaction {
+public class YC_Deposit extends Transaction {
 
-	private BanPhim banPhim;
+	private KeyBoard banPhim;
 	//
 	private double addedMoney;
 	
-	public YeuCau_NapTien() {}
+	public YC_Deposit() {}
 
-	public YeuCau_NapTien(int accountNumber, DatabaseNganHang databaseNganHang, ManHinh manHinh, BanPhim banPhim,
+	public YC_Deposit(int accountNumber, DatabaseNganHang databaseNganHang, Screen manHinh, KeyBoard banPhim,
 			double addedMoney) {
 		super(accountNumber, databaseNganHang, manHinh);
 		this.banPhim = banPhim;
@@ -29,11 +29,11 @@ public class YeuCau_NapTien extends Transaction {
 
 //	double moneyAdded;
 
-	public BanPhim getBanPhim() {
+	public KeyBoard getBanPhim() {
 		return banPhim;
 	}
 
-	public void setBanPhim(BanPhim banPhim) {
+	public void setBanPhim(KeyBoard banPhim) {
 		this.banPhim = banPhim;
 	}
 

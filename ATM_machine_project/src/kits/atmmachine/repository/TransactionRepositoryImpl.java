@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kits.atmmachine.HistoryTransaction;
-import kits.atmmachine.YeuCau_ChuyenTien;
-import kits.atmmachine.YeuCau_HienThiSoDu;
-import kits.atmmachine.YeuCau_NapTien;
-import kits.atmmachine.YeuCau_RutTien;
-import kits.atmmachine.YeuCau_ThayDoiMaPIN;
+import kits.atmmachine.YC_TransferMoney;
+import kits.atmmachine.YC_CheckingBalance;
+import kits.atmmachine.YC_Deposit;
+import kits.atmmachine.YC_Withdrawal;
+import kits.atmmachine.YC_ChangePIN;
 import kits.atmmachine.config.ConnectionFactory;
 import kits.atmmachine.entity.Transaction;
 
@@ -32,23 +32,23 @@ public class TransactionRepositoryImpl implements TransactionRepository {
 		String queryString = "";
 		switch (flag) {
 		case 4:
-			transaction = (YeuCau_ChuyenTien) transaction;
+			transaction = (YC_TransferMoney) transaction;
 			queryString = "INSERT INTO transaction(loaiGiaoDich,description,date_transaction,accountID,accountReceived,moneySend) values(?,?,?,?,?,?)";
 			break;
 		case 1:
-			transaction = (YeuCau_HienThiSoDu) transaction;
+			transaction = (YC_CheckingBalance) transaction;
 			queryString = "INSERT INTO transaction(loaiGiaoDich,description,date_transaction,accountID) values(?,?,?,?)";
 			break;
 		case 3:
-			transaction = (YeuCau_NapTien) transaction;
+			transaction = (YC_Deposit) transaction;
 			queryString = "INSERT INTO transaction(loaiGiaoDich,description,date_transaction,accountID,addedMoney) values(?,?,?,?,?)";
 			break;
 		case 2:
-			transaction = (YeuCau_RutTien) transaction;
+			transaction = (YC_Withdrawal) transaction;
 			queryString = "INSERT INTO transaction(loaiGiaoDich,description,date_transaction,accountID,withdrawlMoney) values(?,?,?,?,?)";
 			break;
 		case 5:
-			transaction = (YeuCau_ThayDoiMaPIN) transaction;
+			transaction = (YC_ChangePIN) transaction;
 			queryString = "INSERT INTO transaction(loaiGiaoDich,description,date_transaction,accountID,oldPIN,newPIN) values(?,?,?,?,?,?)";
 			break;
 		}
@@ -61,10 +61,10 @@ public class TransactionRepositoryImpl implements TransactionRepository {
 			stmt.setString(3, transaction.getDate().toString());
 			stmt.setLong(4, transaction.getAccountNumber());
 
-			if (transaction instanceof YeuCau_ChuyenTien) {
+			if (transaction instanceof YC_TransferMoney) {
 //			transaction=new YeuCau_ChuyenTien();
-				stmt.setLong(5, ((YeuCau_ChuyenTien) transaction).getAccountReceived());
-				stmt.setDouble(6, ((YeuCau_ChuyenTien) transaction).getMoneySend());
+				stmt.setLong(5, ((YC_TransferMoney) transaction).getAccountReceived());
+				stmt.setDouble(6, ((YC_TransferMoney) transaction).getMoneySend());
 //				int temp = 0;
 //				if (aaa.) {
 //					temp= aaaaaaa'
@@ -75,26 +75,26 @@ public class TransactionRepositoryImpl implements TransactionRepository {
 //				stmt.setInt(11, 0);
 			}
 
-			if (transaction instanceof YeuCau_HienThiSoDu) {
+			if (transaction instanceof YC_CheckingBalance) {
 
 			}
 
-			if (transaction instanceof YeuCau_NapTien) {
+			if (transaction instanceof YC_Deposit) {
 //				transaction=new YeuCau_ChuyenTien();
 				// double addedMoney;
-				stmt.setDouble(5, ((YeuCau_NapTien) transaction).getAddedMoney());
+				stmt.setDouble(5, ((YC_Deposit) transaction).getAddedMoney());
 			}
 
-			if (transaction instanceof YeuCau_RutTien) {
+			if (transaction instanceof YC_Withdrawal) {
 //				transaction=new YeuCau_ChuyenTien();
-				stmt.setDouble(5, ((YeuCau_RutTien) transaction).getWithdrawlMoney());
+				stmt.setDouble(5, ((YC_Withdrawal) transaction).getWithdrawlMoney());
 
 			}
 
-			if (transaction instanceof YeuCau_ThayDoiMaPIN) {
+			if (transaction instanceof YC_ChangePIN) {
 //				transaction=new YeuCau_ChuyenTien();
-				stmt.setInt(5, ((YeuCau_ThayDoiMaPIN) transaction).getOldPIN());
-				stmt.setInt(6, ((YeuCau_ThayDoiMaPIN) transaction).getNewPIN());
+				stmt.setInt(5, ((YC_ChangePIN) transaction).getOldPIN());
+				stmt.setInt(6, ((YC_ChangePIN) transaction).getNewPIN());
 
 			}
 

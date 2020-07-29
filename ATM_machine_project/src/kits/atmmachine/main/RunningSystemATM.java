@@ -1,8 +1,10 @@
-package kits.atmmachine;
+package kits.atmmachine.main;
+
+import kits.atmmachine.admin.Admin;
 
 public class RunningSystemATM {
 public static void main(String[] args) {
-	ManagerATM managerATM=new ManagerATM();
+	Admin managerATM=new Admin();
 	managerATM.runningSystem();
 	
 }

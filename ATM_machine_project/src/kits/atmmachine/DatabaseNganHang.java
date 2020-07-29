@@ -16,7 +16,7 @@ import kits.atmmachine.repository.TransactionRepositoryImpl;
 public class DatabaseNganHang {
 
 	private List<Account> listAccount;
-	private ManHinh manHinh;
+	private Screen manHinh;
 	private AccountRepository accountRepo;
 
 	public DatabaseNganHang() {
@@ -38,7 +38,7 @@ public class DatabaseNganHang {
 		// get DB
 		listAccount = accountRepo.findAllAccount();
 
-		manHinh = new ManHinh();
+		manHinh = new Screen();
 
 	}
 
@@ -55,7 +55,7 @@ public class DatabaseNganHang {
 	}
 
 	// Validate user
-	boolean validateUser(int soTK) {
+	public boolean validateUser(int soTK) {
 //		Account taiKhoanKhachHang = getTaiKhoanKhachHang(soTK);
 		Account taiKhoanKhachHang = accountRepo.findAccountById(soTK);
 		if (taiKhoanKhachHang == null) {
@@ -65,7 +65,7 @@ public class DatabaseNganHang {
 	}
 
 	// authenticatedUser
-	boolean authenticatedUser(int soTK, int pin_code) {
+	public boolean authenticatedUser(int soTK, int pin_code) {
 
 		if (validateTKKH(soTK, pin_code)) {
 			return true;
@@ -74,7 +74,7 @@ public class DatabaseNganHang {
 	}
 
 	// validate pin
-	boolean validateTKKH(int soTK, int pin_code) {
+	public boolean validateTKKH(int soTK, int pin_code) {
 //		Account taiKhoanKhachHang = getTaiKhoanKhachHang(soTK);
 		Account taiKhoanKhachHang = accountRepo.findAccountById(soTK);
 		if (taiKhoanKhachHang != null) {
@@ -99,7 +99,7 @@ public class DatabaseNganHang {
 	}
 
 	// Trừ số tiền rút vào số dư khả dụng
-	void credit(double soTienRut, int soTK) {
+	public void credit(double soTienRut, int soTK) {
 //		Account taiKhoanKhachHang = getTaiKhoanKhachHang(soTK);
 		Account taiKhoanKhachHang = accountRepo.findAccountById(soTK);
 		double soDuKhaDung = taiKhoanKhachHang.getSoDuKhaDung();
@@ -122,7 +122,7 @@ public class DatabaseNganHang {
 	}
 
 	// Nạp tiền vào tk
-	void addMoney(double soTienNapThem, int soTK) {
+	public void addMoney(double soTienNapThem, int soTK) {
 
 //		Account taiKhoanKhachHang = getTaiKhoanKhachHang(soTK);
 		Account taiKhoanKhachHang = accountRepo.findAccountById(soTK);
@@ -137,7 +137,7 @@ public class DatabaseNganHang {
 	}
 
 	// Change PIN
-	boolean oldPIN(int oldPIN, int soTK) {
+	public boolean oldPIN(int oldPIN, int soTK) {
 //		Account taiKhoanKhachHang = getTaiKhoanKhachHang(soTK);
 		Account taiKhoanKhachHang = accountRepo.findAccountById(soTK);
 		if (taiKhoanKhachHang.getPin() == oldPIN) {
@@ -147,7 +147,7 @@ public class DatabaseNganHang {
 		return false;
 	}
 
-	void changePIN(int oldPIN, int newPIN, int soTK) {
+	public void changePIN(int oldPIN, int newPIN, int soTK) {
 //		Account taiKhoanKhachHang = getTaiKhoanKhachHang(soTK);
 		Account taiKhoanKhachHang = accountRepo.findAccountById(soTK);
 		if (oldPIN(oldPIN, soTK)) {
@@ -166,7 +166,7 @@ public class DatabaseNganHang {
 	}
 
 	// transfer money
-	void transferMoney(long amountSendAccount, long amountReceiveAccount, double sendAmount) {
+	public void transferMoney(long amountSendAccount, long amountReceiveAccount, double sendAmount) {
 //		Account accountSend = getTaiKhoanKhachHang(amountSendAccount);
 //		Account accountReceived = getTaiKhoanKhachHang(amountReceiveAccount);
 		Account accountSend = accountRepo.findAccountById(amountSendAccount);
@@ -250,7 +250,7 @@ public class DatabaseNganHang {
 
 	}
 
-	//=================    Write Receipt   =======================
+	// ================= Write Receipt =======================
 	public void writeReceipt(String data) {
 		File newfile = new File("C:/Users/PC09/Desktop/exam/text2.txt");
 		OutputStream os = null;

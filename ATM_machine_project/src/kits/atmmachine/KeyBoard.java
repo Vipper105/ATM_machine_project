@@ -2,10 +2,10 @@ package kits.atmmachine;
 
 import java.util.Scanner;
 
-public class BanPhim {
+public class KeyBoard {
 	Scanner sc;
 
-	public BanPhim() {
+	public KeyBoard() {
 		sc = new Scanner(System.in);
 	}
 

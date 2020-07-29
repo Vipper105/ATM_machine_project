@@ -4,15 +4,15 @@ import java.util.Date;
 
 import kits.atmmachine.entity.Transaction;
 
-public class YeuCau_RutTien extends Transaction {
+public class YC_Withdrawal extends Transaction {
 
-	private BanPhim banPhim;
+	private KeyBoard banPhim;
 
 	private double withdrawlMoney;
 	
-	public YeuCau_RutTien() {}
+	public YC_Withdrawal() {}
 
-	public YeuCau_RutTien(int accountNumber, DatabaseNganHang databaseNganHang, ManHinh manHinh, BanPhim banPhim,
+	public YC_Withdrawal(int accountNumber, DatabaseNganHang databaseNganHang, Screen manHinh, KeyBoard banPhim,
 			double withdrawlMoney) {
 		super(accountNumber, databaseNganHang, manHinh);
 		//

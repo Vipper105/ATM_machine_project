@@ -1,6 +1,6 @@
 package kits.atmmachine;
 
-public class ManHinh {
+public class Screen {
 
 	public void displayMessage() {
 		System.out.println("Hello..");

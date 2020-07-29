@@ -4,19 +4,19 @@ import java.util.Date;
 
 import kits.atmmachine.entity.Transaction;
 
-public class YeuCau_ChuyenTien extends Transaction {
+public class YC_TransferMoney extends Transaction {
 
-	private BanPhim banPhim;
-	private ManHinh manHinh;
+	private KeyBoard banPhim;
+	private Screen manHinh;
 	//
 //	private String accountSent;
 	private long accountReceived;
 	private double moneySend;
 
-	public YeuCau_ChuyenTien() {
+	public YC_TransferMoney() {
 	}
 
-	public YeuCau_ChuyenTien(int accountNumber, DatabaseNganHang databaseNganHang, ManHinh manHinh, BanPhim banPhim,
+	public YC_TransferMoney(int accountNumber, DatabaseNganHang databaseNganHang, Screen manHinh, KeyBoard banPhim,
 			long accountReceived, double moneySend) {
 		super(accountNumber, databaseNganHang, manHinh);
 		//

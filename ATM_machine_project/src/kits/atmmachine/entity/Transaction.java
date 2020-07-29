@@ -5,12 +5,12 @@ package kits.atmmachine.entity;
 import java.util.Date;
 
 import kits.atmmachine.DatabaseNganHang;
-import kits.atmmachine.ManHinh;
+import kits.atmmachine.Screen;
 
 public abstract class Transaction {
 
 	protected DatabaseNganHang databaseNganHang;
-	protected ManHinh manHinh;
+	protected Screen manHinh;
 
 	private int accountNumber;
 	//
@@ -25,7 +25,7 @@ public abstract class Transaction {
 	public Transaction() {
 	}
 
-	public Transaction(int accountNumber, DatabaseNganHang databaseNganHang, ManHinh manHinh) {
+	public Transaction(int accountNumber, DatabaseNganHang databaseNganHang, Screen manHinh) {
 		this.accountNumber = accountNumber;
 		this.databaseNganHang = databaseNganHang;
 		this.manHinh = manHinh;
@@ -64,11 +64,11 @@ public abstract class Transaction {
 		this.databaseNganHang = databaseNganHang;
 	}
 
-	public ManHinh getManHinh() {
+	public Screen getManHinh() {
 		return manHinh;
 	}
 
-	public void setManHinh(ManHinh manHinh) {
+	public void setManHinh(Screen manHinh) {
 		this.manHinh = manHinh;
 	}
 

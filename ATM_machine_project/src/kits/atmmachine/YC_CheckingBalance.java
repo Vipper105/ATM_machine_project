@@ -4,15 +4,15 @@ import java.util.Date;
 
 import kits.atmmachine.entity.Transaction;
 
-public class YeuCau_HienThiSoDu extends Transaction {
+public class YC_CheckingBalance extends Transaction {
 	
-	public YeuCau_HienThiSoDu(){}
+	public YC_CheckingBalance(){}
 
 	// Nếu có super thì nó sẽ gọi tới contructure có tham số của thằng cha nếu không
 	// có thì phả khia báo ở thằng cha constructure mặc định
 	// Đơn giản là constructure con nếu ko có super(thuộc tính lớp cha) thì nó sẽ
 	// gọi đến constructure mặc định của cha,nếu ko có khia báo sẽ bị lỗi
-	public YeuCau_HienThiSoDu(int accountNumber, DatabaseNganHang databaseNganHang, ManHinh manHinh) {
+	public YC_CheckingBalance(int accountNumber, DatabaseNganHang databaseNganHang, Screen manHinh) {
 		super(accountNumber, databaseNganHang, manHinh);
 		loaiGiaoDich = "Checking balance";
 		super.date = new Date();

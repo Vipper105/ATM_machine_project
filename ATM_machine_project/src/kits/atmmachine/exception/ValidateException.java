@@ -3,14 +3,14 @@ package kits.atmmachine.exception;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import kits.atmmachine.ManHinh;
+import kits.atmmachine.Screen;
 
 public class ValidateException {
 
-	ManHinh manHinh;
+	Screen manHinh;
 
 	public int validateInputAccountNumber() {
-		manHinh=new ManHinh();
+		manHinh=new Screen();
 		int soTK = 0;
 
 		boolean con = true;
@@ -37,7 +37,7 @@ public class ValidateException {
 	}
 	
 	public int validateInputPINCode() {
-		manHinh=new ManHinh();
+		manHinh=new Screen();
 		int PINcode = 0;
 
 		boolean con = true;

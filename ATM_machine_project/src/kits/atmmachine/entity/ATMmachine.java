@@ -2,16 +2,16 @@ package kits.atmmachine.entity;
 
 import java.util.List;
 import java.util.Scanner;
-import kits.atmmachine.BanPhim;
+import kits.atmmachine.KeyBoard;
 import kits.atmmachine.CashDispenser;
 import kits.atmmachine.DatabaseNganHang;
 import kits.atmmachine.HistoryTransaction;
-import kits.atmmachine.ManHinh;
-import kits.atmmachine.YeuCau_ChuyenTien;
-import kits.atmmachine.YeuCau_HienThiSoDu;
-import kits.atmmachine.YeuCau_NapTien;
-import kits.atmmachine.YeuCau_RutTien;
-import kits.atmmachine.YeuCau_ThayDoiMaPIN;
+import kits.atmmachine.Screen;
+import kits.atmmachine.YC_TransferMoney;
+import kits.atmmachine.YC_CheckingBalance;
+import kits.atmmachine.YC_Deposit;
+import kits.atmmachine.YC_Withdrawal;
+import kits.atmmachine.YC_ChangePIN;
 import kits.atmmachine.repository.AccountRepository;
 import kits.atmmachine.repository.AccountRepositoryImpl;
 import kits.atmmachine.repository.CoinsRepository;
@@ -26,9 +26,9 @@ public class ATMmachine {
 	//
 	boolean authenticated;
 
-	BanPhim banPhim;
+	KeyBoard banPhim;
 	CashDispenser cashDispenser;
-	ManHinh manHinh;
+	Screen manHinh;
 	DatabaseNganHang databaseNganHang;
 
 	Transaction transaction;
@@ -45,10 +45,10 @@ public class ATMmachine {
 		authenticated = false;
 		current_AccountNumber = 0;
 
-		banPhim = new BanPhim();
+		banPhim = new KeyBoard();
 		cashDispenser = new CashDispenser();
 		databaseNganHang = new DatabaseNganHang();
-		manHinh = new ManHinh();
+		manHinh = new Screen();
 
 		transaction = null;
 //		coins=new Coins();
@@ -114,7 +114,7 @@ public class ATMmachine {
 
 				switch (choice) {
 				case 1:
-					transaction = new YeuCau_HienThiSoDu(soTK, databaseNganHang, manHinh);
+					transaction = new YC_CheckingBalance(soTK, databaseNganHang, manHinh);
 
 					// Xem số dư
 					transaction.execute();
@@ -172,7 +172,7 @@ public class ATMmachine {
 					long totalAmountCoins = cashDispenser.sumCoinsInATM(machineID);
 					if (soTienRut <= account.getSoDuKhaDung()) {
 						if (soTienRut <= totalAmountCoins) {
-							transaction = new YeuCau_RutTien(soTK, databaseNganHang, manHinh, banPhim, soTienRut);
+							transaction = new YC_Withdrawal(soTK, databaseNganHang, manHinh, banPhim, soTienRut);
 							// Rút tiền
 							System.out.println("Total Withdrawal: " + soTienRut);
 							transaction.execute();
@@ -196,7 +196,7 @@ public class ATMmachine {
 					// Nạp tiền vào tài khoản
 					manHinh.displayAddMoney();
 					double moneyAdded = banPhim.nhanMonneyNhapVao();
-					transaction = new YeuCau_NapTien(soTK, databaseNganHang, manHinh, banPhim, moneyAdded);
+					transaction = new YC_Deposit(soTK, databaseNganHang, manHinh, banPhim, moneyAdded);
 					transaction.execute();
 					//
 //					lisTransactions.add(transaction);
@@ -214,7 +214,7 @@ public class ATMmachine {
 					manHinh.displayMessageInputTransferAmount();
 					double transferedAmount = banPhim.nhanMonneyNhapVao();
 
-					transaction = new YeuCau_ChuyenTien(soTK, databaseNganHang, manHinh, banPhim, maTK_Received,
+					transaction = new YC_TransferMoney(soTK, databaseNganHang, manHinh, banPhim, maTK_Received,
 							transferedAmount);
 					transaction.execute();
 //					lisTransactions.add(transaction);
@@ -231,7 +231,7 @@ public class ATMmachine {
 					manHinh.displayMessageEnterNewPIN();
 					int newPIN = banPhim.nhanThongTinNhapVao();
 
-					transaction = new YeuCau_ThayDoiMaPIN(soTK, databaseNganHang, manHinh, banPhim, oldPIN, newPIN);
+					transaction = new YC_ChangePIN(soTK, databaseNganHang, manHinh, banPhim, oldPIN, newPIN);
 					transaction.execute();
 					//
 //					lisTransactions.add(transaction);

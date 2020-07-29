@@ -4,16 +4,16 @@ import java.util.Date;
 
 import kits.atmmachine.entity.Transaction;
 
-public class YeuCau_ThayDoiMaPIN extends Transaction {
+public class YC_ChangePIN extends Transaction {
 
 	private int oldPIN;
 	private int newPIN;
 
-	private BanPhim banPhim;
+	private KeyBoard banPhim;
 	
-	public YeuCau_ThayDoiMaPIN() {}
+	public YC_ChangePIN() {}
 
-	public YeuCau_ThayDoiMaPIN(int accountNumber, DatabaseNganHang databaseNganHang, ManHinh manHinh, BanPhim banPhim,
+	public YC_ChangePIN(int accountNumber, DatabaseNganHang databaseNganHang, Screen manHinh, KeyBoard banPhim,
 			int oldPIN, int newPIN) {
 		super(accountNumber, databaseNganHang, manHinh);
 		this.banPhim = banPhim;
