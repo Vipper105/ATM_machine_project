@@ -141,10 +141,10 @@ public class AccountRepositoryImpl implements AccountRepository {
 
 			stmt.executeUpdate();
 			connection.close();
-			System.out.println("Bạn đã add Account thành công!");
+			System.out.println("Add Account successful!");
 
 		} catch (Exception e) {
-			System.out.println("Add Account thất bại.");
+			System.out.println("Add Account fail.");
 			e.printStackTrace();
 		}
 
@@ -162,13 +162,38 @@ public class AccountRepositoryImpl implements AccountRepository {
 
 			stmt.executeUpdate();
 			connection.close();
-			System.out.println("Xóa account thành công");
+			System.out.println("Delete account successfull");
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("Account chưa được xóa");
+			System.out.println("Delete account fail");
 			e.printStackTrace();
 		}
+	}
+	
+	//
+	@Override
+	public void deleteAccountByUserID(long userID,int flag) {
+		String queryString = "DELETE FROM account WHERE userID='" + userID + "'";
+
+		try {
+
+			connection = getConnection();
+
+			stmt = connection.prepareStatement(queryString);
+
+			stmt.executeUpdate();
+			connection.close();
+			if(flag==1) {
+			System.out.println("Delete account successfull");
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Delete account fail");
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override
@@ -202,5 +227,7 @@ public class AccountRepositoryImpl implements AccountRepository {
 		}
 
 	}
+
+	
 
 }

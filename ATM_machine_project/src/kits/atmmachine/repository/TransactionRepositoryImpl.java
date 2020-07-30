@@ -131,6 +131,31 @@ public class TransactionRepositoryImpl implements TransactionRepository {
 
 	}
 
+	//
+	@Override
+	public void deleteTransactionByAccountID(long accountID,int flag) {
+		String queryString = "DELETE FROM transaction WHERE accountID='" + accountID + "'";
+
+		try {
+
+			connection = getConnection();
+
+			stmt = connection.prepareStatement(queryString);
+
+			stmt.executeUpdate();
+			connection.close();
+			
+			if(flag==1) {
+			System.out.println("Delete transaction successfull");
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Delete transaction fail");
+			e.printStackTrace();
+		}
+	}
+
 	@Override
 	public HistoryTransaction findTransactionById(long transactionID) {
 		// Viết câu truy vấn

@@ -7,9 +7,11 @@ import kits.atmmachine.entity.Transaction;
 
 public interface TransactionRepository {
 
-	void addTransaction(Transaction transaction,int flag);
+	void addTransaction(Transaction transaction, int flag);
 
 	void deleteTransaction(long transactionID);
+
+	void deleteTransactionByAccountID(long accountID,int flag);
 
 	void updateTrans(HistoryTransaction transaction);
 

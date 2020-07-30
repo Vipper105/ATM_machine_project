@@ -9,7 +9,10 @@ public interface AccountRepository {
 	void addAccount(Account acc);
 
 	void deleteAccount(long accountID);
-
+	
+	void deleteAccountByUserID(long userID,int flag);
+	
+	
 	void updateAccount(Account acc);
 
 

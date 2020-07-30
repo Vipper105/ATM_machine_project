@@ -100,36 +100,37 @@ public class UserRepositoryImpl implements UserRepository {
 
 		return us;
 	}
-	
+
 	// Tìm user theo mã tài khoản accountID
-		public User findUserByAccountID(int accountID) {
-			String queryString = "SELECT user.* FROM user JOIN account ON user.userID=account.userID WHERE account.accountID='" + accountID + "'";
+	public User findUserByAccountID(int accountID) {
+		String queryString = "SELECT user.* FROM user JOIN account ON user.userID=account.userID WHERE account.accountID='"
+				+ accountID + "'";
 
-			User us = new User();
-			try {
-				connection = getConnection();
-			
-				stmt = connection.prepareStatement(queryString);
-				rs = stmt.executeQuery();
+		User us = new User();
+		try {
+			connection = getConnection();
 
-				while (rs.next()) {
-					us.setUserId(rs.getLong("userID"));
-					us.setUserName(rs.getString("userName"));
-					us.setAge(rs.getInt("age"));
-					us.setSex(rs.getString("sex"));
-					us.setPhoneNumber(rs.getString("phoneNumber"));
-					us.setAddress(rs.getString("address"));
-				}
+			stmt = connection.prepareStatement(queryString);
+			rs = stmt.executeQuery();
 
-				connection.close();
-				System.out.println("User is found");
-			} catch (Exception e) {
-				System.out.println("User is not found");
-				e.printStackTrace();
+			while (rs.next()) {
+				us.setUserId(rs.getLong("userID"));
+				us.setUserName(rs.getString("userName"));
+				us.setAge(rs.getInt("age"));
+				us.setSex(rs.getString("sex"));
+				us.setPhoneNumber(rs.getString("phoneNumber"));
+				us.setAddress(rs.getString("address"));
 			}
 
-			return us;
+			connection.close();
+			System.out.println("User is found");
+		} catch (Exception e) {
+			System.out.println("User is not found");
+			e.printStackTrace();
 		}
+
+		return us;
+	}
 
 	@Override
 	// Update user thực hiện sai khi tìm kiếm ra user (hay gọi là getUser)
@@ -139,22 +140,22 @@ public class UserRepositoryImpl implements UserRepository {
 
 		try {
 			connection = getConnection();
-			stmt =(PreparedStatement) connection.prepareStatement(queryString);
-		
+			stmt = (PreparedStatement) connection.prepareStatement(queryString);
+
 			stmt.setString(1, user.getUserName());
 			stmt.setInt(2, user.getAge());
 			stmt.setString(3, user.getSex());
 			stmt.setString(4, user.getPhoneNumber());
 			stmt.setString(5, user.getAddress());
-			
+
 			stmt.setLong(6, user.getUserId());
-			
+
 			stmt.executeUpdate();
 			connection.close();
 
-			System.out.println("User is updated successfully");
+			System.out.println("Update user successfully");
 		} catch (Exception e) {
-			System.out.println("User is updated fail");
+			System.out.println("Update user fail");
 			e.printStackTrace();
 		}
 
@@ -163,8 +164,8 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	// Xóa User
 	public void delete(long userID) {
-
-		String queryString = "DELETE FROM user WHERE userID='" + userID + "'";												
+		
+		String queryString = "DELETE FROM user WHERE userID='" + userID + "'";
 
 		try {
 
@@ -174,15 +175,17 @@ public class UserRepositoryImpl implements UserRepository {
 
 			stmt.executeUpdate();
 			connection.close();
-			System.out.println("Xóa sản phẩm thành công");
+			System.out.println("Delete user suscessfull");
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("Sản phẩm chưa được xóa");
+			System.out.println("Delete user fail");
 			e.printStackTrace();
 		}
 
 	}
+	
+//	public void delete
 
 	@Override
 	// Thêm User
@@ -202,7 +205,7 @@ public class UserRepositoryImpl implements UserRepository {
 
 			stmt.executeUpdate();
 			connection.close();
-			System.out.println("Bạn đã add user thành công!");
+			System.out.println("Add user successfully!");
 			/*
 			 * 1) public ResultSet executeQuery(String sql): được sử dụng để thực hiện truy
 			 * vấn SELECT. Nó trả về đối tượng của ResultSet. 2) public int
@@ -210,7 +213,7 @@ public class UserRepositoryImpl implements UserRepository {
 			 * định, nó có thể là create, drop, insert, update, delete, ...
 			 */
 		} catch (Exception e) {
-			System.out.println("Add User thất bại.");
+			System.out.println("Add User fail.");
 			e.printStackTrace();
 		}
 

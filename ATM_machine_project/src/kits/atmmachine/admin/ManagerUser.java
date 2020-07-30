@@ -5,7 +5,12 @@ import java.util.List;
 
 import kits.atmmachine.client.KeyBoard;
 import kits.atmmachine.client.Screen;
+import kits.atmmachine.entity.Account;
 import kits.atmmachine.entity.User;
+import kits.atmmachine.repository.AccountRepository;
+import kits.atmmachine.repository.AccountRepositoryImpl;
+import kits.atmmachine.repository.TransactionRepository;
+import kits.atmmachine.repository.TransactionRepositoryImpl;
 import kits.atmmachine.repository.UserRepository;
 import kits.atmmachine.repository.UserRepositoryImpl;
 
@@ -90,7 +95,14 @@ public class ManagerUser {
 		while (true) {
 			manHinh.displayInputUserID();
 			int userID = banPhim.nhanThongTinNhapVao();
+			Account acc = new Account();
+
 			UserRepository userRepo = new UserRepositoryImpl();
+			AccountRepository accRepo = new AccountRepositoryImpl();
+			TransactionRepository tranRepo = new TransactionRepositoryImpl();
+			
+			tranRepo.deleteTransactionByAccountID(acc.getSoTK(),0);
+			accRepo.deleteAccountByUserID(userID,0);
 			userRepo.delete(userID);
 
 			manHinh.displayMessageContinue();
