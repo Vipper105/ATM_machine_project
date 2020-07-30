@@ -2,7 +2,7 @@ package kits.atmmachine.repository;
 
 import java.util.List;
 
-import kits.atmmachine.HistoryTransaction;
+import kits.atmmachine.client.HistoryTransaction;
 import kits.atmmachine.entity.Transaction;
 
 public interface TransactionRepository {

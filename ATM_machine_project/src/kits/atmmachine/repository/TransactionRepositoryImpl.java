@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import kits.atmmachine.HistoryTransaction;
-import kits.atmmachine.YC_TransferMoney;
-import kits.atmmachine.YC_CheckingBalance;
-import kits.atmmachine.YC_Deposit;
-import kits.atmmachine.YC_Withdrawal;
-import kits.atmmachine.YC_ChangePIN;
+import kits.atmmachine.client.HistoryTransaction;
+import kits.atmmachine.client.YC_ChangePIN;
+import kits.atmmachine.client.YC_CheckingBalance;
+import kits.atmmachine.client.YC_Deposit;
+import kits.atmmachine.client.YC_TransferMoney;
+import kits.atmmachine.client.YC_Withdrawal;
 import kits.atmmachine.config.ConnectionFactory;
 import kits.atmmachine.entity.Transaction;
 

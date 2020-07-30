@@ -1,4 +1,4 @@
-package kits.atmmachine;
+package kits.atmmachine.client;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -67,23 +67,33 @@ public class CashDispenser {
 			}
 		}
 
-		System.out.println("\n --------  List of price tag  --------- ");
+		System.out.println("\nYour return coins:  ");
 		// print array contains minimun coin
 		String str1 = "";
 		for (int i = 0; i < listMinimumCoin.size(); i++) {
-			str1 += listMinimumCoin.get(i)+" ,";
+			str1 += listMinimumCoin.get(i) + " ,";
 //			System.out.print(listMinimumCoin.get(i) + ", ");
 		}
 		System.out.println(str1.replaceAll(",$", ""));
 
-		System.out.println("\n --------  List of quantity of price array  ----------");
+		System.out.println("\n --------  List of price tag of ATM machine  ----------");
 		// print array contains quantity of priceTag after payment
 		String str2 = "";
-		for (int i = 0; i < arrQuantityOfPriceTag.length; i++) {
-			str2 += arrQuantityOfPriceTag[i] + " ,";
-//			System.out.print(arrQuantityOfPriceTag[i] + ", ");	
+		for (int i = 0; i < arrPriceTag.length; i++) {
+			str2 += arrPriceTag[i] + " ,";
+//					System.out.print(arrQuantityOfPriceTag[i] + ", ");	
 		}
 		System.out.println(str2.replaceAll(",$", ""));
+		System.out.println("=========================================================================");
+
+		System.out.println("\n --------  List of current quantity coins of ATM machine  ----------");
+		// print array contains quantity of priceTag after payment
+		String str3 = "";
+		for (int i = 0; i < arrQuantityOfPriceTag.length; i++) {
+			str3 += arrQuantityOfPriceTag[i] + " ,";
+//			System.out.print(arrQuantityOfPriceTag[i] + ", ");	
+		}
+		System.out.println(str3.replaceAll(",$", ""));
 		System.out.println("=========================================================================");
 
 		// input data from quantity array back quantity listCoins

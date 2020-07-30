@@ -2,21 +2,23 @@ package kits.atmmachine.entity;
 
 import java.util.List;
 import java.util.Scanner;
-import kits.atmmachine.KeyBoard;
-import kits.atmmachine.CashDispenser;
-import kits.atmmachine.DatabaseNganHang;
-import kits.atmmachine.HistoryTransaction;
-import kits.atmmachine.Screen;
-import kits.atmmachine.YC_TransferMoney;
-import kits.atmmachine.YC_CheckingBalance;
-import kits.atmmachine.YC_Deposit;
-import kits.atmmachine.YC_Withdrawal;
-import kits.atmmachine.YC_ChangePIN;
+
+import kits.atmmachine.client.CashDispenser;
+import kits.atmmachine.client.DatabaseNganHang;
+import kits.atmmachine.client.HistoryTransaction;
+import kits.atmmachine.client.KeyBoard;
+import kits.atmmachine.client.Screen;
+import kits.atmmachine.client.YC_ChangePIN;
+import kits.atmmachine.client.YC_CheckingBalance;
+import kits.atmmachine.client.YC_Deposit;
+import kits.atmmachine.client.YC_TransferMoney;
+import kits.atmmachine.client.YC_Withdrawal;
 import kits.atmmachine.repository.AccountRepository;
 import kits.atmmachine.repository.AccountRepositoryImpl;
 import kits.atmmachine.repository.CoinsRepository;
 import kits.atmmachine.repository.TransactionRepository;
 import kits.atmmachine.repository.TransactionRepositoryImpl;
+import kits.atmmachine.thread.ThreadWithdrawal;
 
 public class ATMmachine {
 
@@ -40,6 +42,8 @@ public class ATMmachine {
 	CoinsRepository coinsRepo;
 
 	Scanner sc = new Scanner(System.in);
+
+	static double soTienRut = 0;
 
 	public ATMmachine() {
 		authenticated = false;
@@ -128,7 +132,7 @@ public class ATMmachine {
 
 				case 2:
 					boolean isOnDrawMonney = true;
-					double soTienRut = 0;
+//					double soTienRut = 0;
 					int[] amounts = { 0, 10, 50, 100, 200, 500, 1000, 2000 };
 					while (isOnDrawMonney) {
 						manHinh.displayMenuRutTien();
@@ -166,8 +170,8 @@ public class ATMmachine {
 						}
 					}
 
-					AccountRepository accRepo=new AccountRepositoryImpl();
-					Account account=accRepo.findAccountById(machineID);
+					AccountRepository accRepo = new AccountRepositoryImpl();
+					Account account = accRepo.findAccountById(machineID);
 //					Account account = new Account();
 					long totalAmountCoins = cashDispenser.sumCoinsInATM(machineID);
 					if (soTienRut <= account.getSoDuKhaDung()) {
@@ -178,7 +182,7 @@ public class ATMmachine {
 							transaction.execute();
 
 							cashDispenser.dispenserWithMinimumCoin(soTienRut, machineID);
-							flag = 2; 
+							flag = 2;
 							addTrans(transaction, flag);
 							isContinue = true;
 
@@ -269,10 +273,13 @@ public class ATMmachine {
 			isOn = false;
 		}
 
-		// In receipt => lấy từ lịch sử gia dịch
+		// In receipt and receive money => lấy từ lịch sử gia dịch
 		manHinh.displayAskPrintReceipt();
 		String data = banPhim.nhanThongTinNhapVaoYesNo();
 		boolean isPrintReceipt = check(data);
+
+		ThreadWithdrawal waitThread = new ThreadWithdrawal(soTienRut, machineID);
+		Thread thread;
 
 		TransactionRepository tranRepo = new TransactionRepositoryImpl();
 		List<HistoryTransaction> listTransaction = tranRepo.findAllTransaction();
@@ -280,7 +287,17 @@ public class ATMmachine {
 			databaseNganHang.receipt(listTransaction);
 			manHinh.displayMessagePrintReceiptSuccess();
 
+			// Handle Thread waiting to colect money
+			System.out.println("Wait for collecting money...");
+
+			thread = new Thread(waitThread);
+			thread.start();
+//			cashDispenser.dispenserWithMinimumCoin(soTienRut, machineID);	
+
 		} else {
+			System.out.println("Wait for collecting money...");
+			thread = new Thread(waitThread);
+			thread.start();
 			return;
 		}
 	}
@@ -318,7 +335,7 @@ public class ATMmachine {
 
 //	// =========================== // IO =======================================
 
-	// thêm transaction
+	// Add more transaction
 	public void addTrans(Transaction transaction, int flag) {
 
 		TransactionRepository accRepo = new TransactionRepositoryImpl();

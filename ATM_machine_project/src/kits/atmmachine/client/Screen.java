@@ -1,4 +1,4 @@
-package kits.atmmachine;
+package kits.atmmachine.client;
 
 public class Screen {
 

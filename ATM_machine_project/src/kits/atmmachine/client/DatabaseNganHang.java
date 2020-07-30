@@ -1,4 +1,4 @@
-package kits.atmmachine;
+package kits.atmmachine.client;
 
 import java.io.File;
 import java.io.FileOutputStream;

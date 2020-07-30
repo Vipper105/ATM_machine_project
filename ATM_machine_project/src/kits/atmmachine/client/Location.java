@@ -1,4 +1,4 @@
-package kits.atmmachine;
+package kits.atmmachine.client;
 
 public class Location {
 	private int locationID;

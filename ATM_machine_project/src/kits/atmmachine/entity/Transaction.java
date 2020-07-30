@@ -4,8 +4,8 @@ package kits.atmmachine.entity;
 
 import java.util.Date;
 
-import kits.atmmachine.DatabaseNganHang;
-import kits.atmmachine.Screen;
+import kits.atmmachine.client.DatabaseNganHang;
+import kits.atmmachine.client.Screen;
 
 public abstract class Transaction {
 

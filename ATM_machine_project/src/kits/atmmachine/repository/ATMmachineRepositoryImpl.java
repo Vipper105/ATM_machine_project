@@ -98,11 +98,11 @@ public class ATMmachineRepositoryImpl implements ATMmachineRepository {
 
 			stmt.executeUpdate();
 			connection.close();
-			System.out.println("Xóa ATM machine thành công");
+			System.out.println("Delete ATM machine successfull");
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("ATM machine chưa được xóa");
+			System.out.println("Delete ATM machine fail");
 			e.printStackTrace();
 		}
 
@@ -124,9 +124,9 @@ public class ATMmachineRepositoryImpl implements ATMmachineRepository {
 			stmt.executeUpdate();
 			connection.close();
 
-			System.out.println("ATM machine is updated successfully");
+			System.out.println("Edit ATM machine successfull");
 		} catch (Exception e) {
-			System.out.println("ATM machine is updated fail");
+			System.out.println("Edit ATM machine fail");
 			e.printStackTrace();
 		}
 
@@ -150,7 +150,7 @@ public class ATMmachineRepositoryImpl implements ATMmachineRepository {
 			}
 
 			connection.close();
-			System.out.println("Account is found");
+			System.out.println("ATM is found");
 		} catch (Exception e) {
 			System.out.println("ATM is not found");
 			e.printStackTrace();

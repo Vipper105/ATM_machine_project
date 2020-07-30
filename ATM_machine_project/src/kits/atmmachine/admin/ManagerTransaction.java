@@ -1,9 +1,9 @@
 package kits.atmmachine.admin;
 
-import kits.atmmachine.DatabaseNganHang;
-import kits.atmmachine.HistoryTransaction;
-import kits.atmmachine.KeyBoard;
-import kits.atmmachine.Screen;
+import kits.atmmachine.client.DatabaseNganHang;
+import kits.atmmachine.client.HistoryTransaction;
+import kits.atmmachine.client.KeyBoard;
+import kits.atmmachine.client.Screen;
 import kits.atmmachine.repository.TransactionRepository;
 import kits.atmmachine.repository.TransactionRepositoryImpl;
 

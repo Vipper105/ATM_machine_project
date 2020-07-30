@@ -2,9 +2,9 @@ package kits.atmmachine.admin;
 
 import java.util.List;
 
-import kits.atmmachine.DatabaseNganHang;
-import kits.atmmachine.KeyBoard;
-import kits.atmmachine.Screen;
+import kits.atmmachine.client.DatabaseNganHang;
+import kits.atmmachine.client.KeyBoard;
+import kits.atmmachine.client.Screen;
 import kits.atmmachine.entity.Coins;
 import kits.atmmachine.repository.CoinsRepository;
 import kits.atmmachine.repository.CoinsRepositoryImpl;

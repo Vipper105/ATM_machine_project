@@ -5,10 +5,10 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import kits.atmmachine.KeyBoard;
-import kits.atmmachine.DatabaseNganHang;
-import kits.atmmachine.HistoryTransaction;
-import kits.atmmachine.Screen;
+import kits.atmmachine.client.DatabaseNganHang;
+import kits.atmmachine.client.HistoryTransaction;
+import kits.atmmachine.client.KeyBoard;
+import kits.atmmachine.client.Screen;
 import kits.atmmachine.entity.ATMmachine;
 import kits.atmmachine.entity.Account;
 import kits.atmmachine.entity.Coins;
