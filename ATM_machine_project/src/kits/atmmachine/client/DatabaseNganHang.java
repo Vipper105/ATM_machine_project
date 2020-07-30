@@ -245,7 +245,8 @@ public class DatabaseNganHang {
 
 	// ================= Write Receipt =======================
 	public void writeReceipt(String data) {
-		File newfile = new File("C:/Users/PC09/Desktop/exam/text2.txt");
+//		File newfile = new File("C:/Users/PC09/Desktop/exam/text2.txt");
+		File newfile = new File("../ATM_machine_project/src/kits/atmmachine/log/text2.txt");
 		OutputStream os = null;
 		try {
 			os = new FileOutputStream(newfile);
