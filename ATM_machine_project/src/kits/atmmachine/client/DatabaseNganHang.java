@@ -64,22 +64,14 @@ public class DatabaseNganHang {
 		return true;
 	}
 
-	// authenticatedUser
-	public boolean authenticatedUser(int soTK, int pin_code) {
-
-		if (validateTKKH(soTK, pin_code)) {
-			return true;
-		}
-		return false;
-	}
-
 	// validate pin
-	public boolean validateTKKH(int soTK, int pin_code) {
+	public boolean validatePIN(int soTK, int pin_code) {
 //		Account taiKhoanKhachHang = getTaiKhoanKhachHang(soTK);
 		Account taiKhoanKhachHang = accountRepo.findAccountById(soTK);
-		if (taiKhoanKhachHang != null) {
-			return taiKhoanKhachHang.validatePIN(pin_code);
+		if (taiKhoanKhachHang.getPin() == pin_code) {
+			return true;
 		}
+
 		return false;
 	}
 
@@ -111,8 +103,6 @@ public class DatabaseNganHang {
 			taiKhoanKhachHang.setSoDuKhaDung(soDuKhaDung);
 			taiKhoanKhachHang.setTongSoDu(soDoTotal);
 			// update xuống DB
-//			System.out.println("Withdrawal succsessfully");
-//			System.out.println("Số dư hiện tại : " + soDuKhaDung);
 			accountRepo.updateAccount(taiKhoanKhachHang);
 		} else {
 //			System.out.println("Balance is not enough money for Withdrawal");
@@ -150,7 +140,9 @@ public class DatabaseNganHang {
 	public void changePIN(int oldPIN, int newPIN, int soTK) {
 //		Account taiKhoanKhachHang = getTaiKhoanKhachHang(soTK);
 		Account taiKhoanKhachHang = accountRepo.findAccountById(soTK);
+		// check is the same old PIN
 		if (oldPIN(oldPIN, soTK)) {
+			// Check if wheather oldPIN is diffirent newPIN
 			if (oldPIN != newPIN) {
 				taiKhoanKhachHang.setPin(newPIN);
 				accountRepo.updateAccount(taiKhoanKhachHang);
@@ -174,15 +166,6 @@ public class DatabaseNganHang {
 
 		double balanceAvailable_SendUser = accountSend.getSoDuKhaDung() - sendAmount;
 		double balanceTotal_SendUser = accountSend.getTongSoDu() - sendAmount;
-//		List<Account> listAccount = accountRepo.findAllAccount();
-//
-//		// check existed user receive in DB
-//		boolean isExist = false;
-//		for (Account acc : listAccount) {
-//			if (acc != null && acc.getSoTK() == amountReceiveAccount) {
-//				isExist = true;
-//			}
-//		}
 
 		if (balanceAvailable_SendUser >= 0) {
 			// Account send

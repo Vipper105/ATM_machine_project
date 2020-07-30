@@ -53,12 +53,14 @@ public class Admin {
 		while (isContinueAll) {
 
 			int soTK = 0;
-			// Exception input account number
+			// validate account ID
 			soTK = validateException.validateInputAccountNumber();
 
 			if (databaseNganHang.validateUser(soTK)) {
+				// validate PIN code
 				int PIN = validateException.validateInputPINCode();
-				if (databaseNganHang.authenticatedUser(soTK, PIN)) {
+				
+				if (databaseNganHang.validatePIN(soTK, PIN)) {
 					// đang nhập thành công
 					manHinh.displayMessageLoginSuccessfull();
 					//

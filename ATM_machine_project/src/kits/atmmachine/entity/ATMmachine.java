@@ -55,8 +55,6 @@ public class ATMmachine {
 		manHinh = new Screen();
 
 		transaction = null;
-//		coins=new Coins();
-//		lisTransactions = new ArrayList<Transaction>();
 
 	}
 
@@ -256,9 +254,7 @@ public class ATMmachine {
 
 					transaction = new YC_ChangePIN(soTK, databaseNganHang, manHinh, banPhim, oldPIN, newPIN);
 					transaction.execute();
-					//
 //					lisTransactions.add(transaction);
-					//
 					flag = 5;
 					addTrans(transaction, flag);
 					isContinue = true;
@@ -278,7 +274,7 @@ public class ATMmachine {
 					break;
 
 				default:
-					System.out.println("Wrong choice");
+					System.out.println("Wrong choice!");
 				}
 
 				// continue ??

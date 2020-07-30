@@ -13,14 +13,11 @@ public abstract class Transaction {
 	protected Screen manHinh;
 
 	private int accountNumber;
-	//
-//	static int transactionID = 0;
 	protected long transactionID;
 	protected String loaiGiaoDich;
 	protected String description;
 	protected Date date;
 	
-//	int subtransactionID=0;
 
 	public Transaction() {
 	}
@@ -71,15 +68,6 @@ public abstract class Transaction {
 	public void setManHinh(Screen manHinh) {
 		this.manHinh = manHinh;
 	}
-
-	//
-//	public int getTransactionID() {
-//		return transactionID;
-//	}
-//
-//	public void setTransactionID(int transactionID) {
-//		this.transactionID = transactionID;
-//	}
 
 	public String getLoaiGiaoDich() {
 		return loaiGiaoDich;
