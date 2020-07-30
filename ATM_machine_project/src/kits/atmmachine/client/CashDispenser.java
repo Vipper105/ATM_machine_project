@@ -17,6 +17,7 @@ public class CashDispenser {
 	int machineID;
 
 	public CashDispenser() {
+		//
 		coinsRepo = new CoinsRepositoryImpl();
 	}
 

@@ -2,7 +2,7 @@ package kits.atmmachine.client;
 
 public class Screen {
 
-	public void displayMessage() {
+	public void displayMessageHello() {
 		System.out.println("Hello..");
 	}
 

@@ -100,7 +100,7 @@ public class ATMmachine {
 		boolean isOn = true;
 
 		// Mản hình hiển thị message welcome
-		manHinh.displayMessage();
+		manHinh.displayMessageHello();
 
 		while (isOn) {
 
@@ -348,7 +348,6 @@ public class ATMmachine {
 
 	}
 
-//	// =========================== // IO =======================================
 
 	// Add more transaction
 	public void addTrans(Transaction transaction, int flag) {

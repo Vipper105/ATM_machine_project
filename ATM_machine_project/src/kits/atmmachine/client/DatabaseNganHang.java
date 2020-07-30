@@ -140,6 +140,7 @@ public class DatabaseNganHang {
 	public void changePIN(int oldPIN, int newPIN, int soTK) {
 //		Account taiKhoanKhachHang = getTaiKhoanKhachHang(soTK);
 		Account taiKhoanKhachHang = accountRepo.findAccountById(soTK);
+
 		// check is the same old PIN
 		if (oldPIN(oldPIN, soTK)) {
 			// Check if wheather oldPIN is diffirent newPIN
