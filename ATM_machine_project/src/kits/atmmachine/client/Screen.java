@@ -125,6 +125,10 @@ public class Screen {
 		System.out.println("\nAvailable balance is NOT enough.");
 	}
 
+	public void displayMessageAccountReceivedNotExisted() {
+		System.out.println("\nAccount received is not existed");
+	}
+
 	public void displayMenuAdmin() {
 		System.out.println("============================================");
 		System.out.println("Menu admin");

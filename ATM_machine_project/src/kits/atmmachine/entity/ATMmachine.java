@@ -212,20 +212,39 @@ public class ATMmachine {
 				case 4:
 					// Chuyển tiền
 					// chọn tài khoản ngân hàng muốn chuyển tiền
-					manHinh.displayMessageTransferedUser();
-					long maTK_Received = banPhim.nhanThongTinNhapVao();
-					// Nhập số tiền muốn chuyển
-					manHinh.displayMessageInputTransferAmount();
-					double transferedAmount = banPhim.nhanMonneyNhapVao();
+					while (true) {
+						manHinh.displayMessageTransferedUser();
+						long accountReceived = banPhim.nhanThongTinNhapVao();
+						AccountRepository accountRepo = new AccountRepositoryImpl();
 
-					transaction = new YC_TransferMoney(soTK, databaseNganHang, manHinh, banPhim, maTK_Received,
-							transferedAmount);
-					transaction.execute();
+						List<Account> listAccount = accountRepo.findAllAccount();
+
+						// check existed user receive in DB
+						boolean isExisted = false;
+						for (Account acc : listAccount) {
+							if (acc != null && acc.getSoTK() == accountReceived) {
+								isExisted = true;
+							}
+						}
+
+						if (isExisted) {
+							// Nhập số tiền muốn chuyển
+							manHinh.displayMessageInputTransferAmount();
+							double transferedAmount = banPhim.nhanMonneyNhapVao();
+
+							transaction = new YC_TransferMoney(soTK, databaseNganHang, manHinh, banPhim,
+									accountReceived, transferedAmount);
+							transaction.execute();
 //					lisTransactions.add(transaction);
-					//
-					flag = 4;
-					addTrans(transaction, flag);
-					isContinue = true;
+							//
+							flag = 4;
+							addTrans(transaction, flag);
+							isContinue = true;
+							break;
+						} else {
+							manHinh.displayMessageAccountReceivedNotExisted();
+						}
+					}
 					break;
 
 				case 5:

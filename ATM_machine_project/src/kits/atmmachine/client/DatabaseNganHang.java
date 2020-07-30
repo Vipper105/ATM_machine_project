@@ -174,6 +174,15 @@ public class DatabaseNganHang {
 
 		double balanceAvailable_SendUser = accountSend.getSoDuKhaDung() - sendAmount;
 		double balanceTotal_SendUser = accountSend.getTongSoDu() - sendAmount;
+//		List<Account> listAccount = accountRepo.findAllAccount();
+//
+//		// check existed user receive in DB
+//		boolean isExist = false;
+//		for (Account acc : listAccount) {
+//			if (acc != null && acc.getSoTK() == amountReceiveAccount) {
+//				isExist = true;
+//			}
+//		}
 
 		if (balanceAvailable_SendUser >= 0) {
 			// Account send
