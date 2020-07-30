@@ -132,7 +132,7 @@ public class ATMmachine {
 
 				case 2:
 					boolean isOnDrawMonney = true;
-//					double soTienRut = 0;
+//					soTienRut = 0;
 					int[] amounts = { 0, 10, 50, 100, 200, 500, 1000, 2000 };
 					while (isOnDrawMonney) {
 						manHinh.displayMenuRutTien();
@@ -171,7 +171,7 @@ public class ATMmachine {
 					}
 
 					AccountRepository accRepo = new AccountRepositoryImpl();
-					Account account = accRepo.findAccountById(machineID);
+					Account account = accRepo.findAccountById(soTK);
 //					Account account = new Account();
 					long totalAmountCoins = cashDispenser.sumCoinsInATM(machineID);
 					if (soTienRut <= account.getSoDuKhaDung()) {
