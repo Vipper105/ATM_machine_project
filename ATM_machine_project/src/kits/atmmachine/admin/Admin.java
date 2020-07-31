@@ -77,7 +77,7 @@ public class Admin {
 							int choose = banPhim.nhanThongTinNhapVao();
 							switch (choose) {
 							case 1:
-								manHinh.displayMenuAdminManagerATM();
+//								manHinh.displayMenuAdminManagerATM();
 								//
 								ManagerATMMachine managerATMMachine = new ManagerATMMachine();
 								managerATMMachine.managerATMmachine();
