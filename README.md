@@ -24,6 +24,6 @@ Main functions:
         - Check balance
         - Transfer money
         - Show history transaction
-        - Cash money with minium coins
+        - Cash money with minimum coins
         - Export files txt (I/O)
         - Thread for waiting get money after finish cash money
