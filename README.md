@@ -18,6 +18,7 @@ Main functions:
         - Manage User/Transaction/Coin/ATM machine (CRUD)
 
     Client: 
+        - Login/Logout
         - Deposit/ Withdraw money
         - ChangePIN
         - Check balance
