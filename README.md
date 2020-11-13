@@ -15,7 +15,7 @@ Main functions:
     Admin: 
         - Manage User/Transaction/Coin/ATM machine (CRUD)
 
-    User: 
+    Client: 
         - Deposit/ Withdraw money
         - ChangePIN
         - Check balance
