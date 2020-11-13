@@ -10,7 +10,7 @@ Project use techniques :
     + Thread
  
 Description :
-    - User can use ATM machine to deposit,withdraw,changPIN, ..
+    - ATM machine helps user deposit,withdraw,changePIN, ... easily and quickly
 
 Main functions:
 
