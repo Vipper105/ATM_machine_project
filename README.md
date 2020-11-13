@@ -11,10 +11,11 @@ Description :
 - User can use ATM machine to deposit,withdraw,changPIN, ..
 
 Main functions:
-ADMIN 
+
+Admin: 
 - Manage User/Transaction/Coin/ATM machine (CRUD)
 
-USER
+User: 
 - Deposit/ Withdraw money
 - ChangePIN
 - Check balance
