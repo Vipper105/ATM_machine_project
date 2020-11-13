@@ -4,7 +4,8 @@
 Duration: 1 week
 
 Project use techniques : 
-    + Java core, OOP
+    + Java core
+    + OOP
     + Connect DB by Maria DB,
     + I/O
     + Thread
