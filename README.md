@@ -1,4 +1,6 @@
 # ATM_machine_project
+@Author: PHUNG DINH HUY
+
 Duration: 1 week
 
 Project use techniques : 
